@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Find and Replace console.log using reg.ex search</title>
+</head>
+<style>
+    html, body{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+        margin-left: 20px;
+    }
+    code {
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        background-color: grey;
+        color: white;
+        font-weight: bold;
+        padding: 3px;
+    }
+    h2{
+        margin-bottom: 3px;
+    }
+    h3, h4{
+        margin-bottom: 0;
+    }
+    h6{
+        margin-top:0;
+    }
+    ::-moz-selection { color: darkred;  background-color:cornflowerblue; }
+    ::selection      { color: darkred;  background-color: cornflowerblue; }
+</style>
+<body>
+<h2>Find and Replace console.log using reg.ex search!!!</h2>
+<h6>Tested with WebStorm Only, must be useful any tool supporting reg-ex find and replace.</h6>
+<h4>find console</h4>
+<code>console.log\(.*\)
+</code>
+
+<h4>comment console with '//'</h4>
+<code>console.log\((.*)\)
+//console.log\($1\)
+</code>
+
+<h4>use this to remove commented console.logs ('//') in any regx finder</h4>
+<code>//\s+console.log\(.*\)
+</code>
+
+<h3>var DEBUG = false;</h3>
+<h4>then add this so console can be controlled globally ;)</h4>
+
+<h4>remove incuding new line</h4>
+<code>\s+ console.log\((.*)\)?;
+if (DEBUG) console.log\($1\);
+</code>
+
+<h4>remove without newline</h4>
+<code>[^\S\n] console.log\((.*)\)?;
+if (DEBUG) console.log\($1\;
+</code>
+
+<h4>no worries, if you want remove just replace with empty string.</h4>
+<code>[^\S\n] console.log\((.*)\)?;
+
+</code>
+</body>
+</html>
