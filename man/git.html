@@ -1,0 +1,220 @@
+*************LEGEND****************
+*                                 *
+*     {}    => params             *
+*     []    => optional           *
+*     ()    => description        *
+*     ==    => alternative way    *
+*     **    => quick              *
+*                                 *
+***********************************
+create .gitignore file on root.
+_______________________________
+
+    Blank lines or lines starting with # are ignored.
+    Standard glob patterns work.
+    You can end patterns with a forward slash (/) to specify a directory.
+    You can negate a pattern by starting it with an exclamation point (!).
+
+*.[oa] ( ignore any files ending in .o or .a )
+*~ (gnore all files that end with a tilde (~) )
+# no .a files
+*.a
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+# only ignore the root TODO file, not subdir/TODO
+/TODO
+# ignore all files in the build/ directory
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .txt files in the doc/ directory
+doc/**/*.txt
+
+git init
+_________
+
+git remote [-v] (-v, which shows you the URL) (list all remotes with urls)
+git remote show {remote name, probably origin} (list details about a remote)
+git remote add {shortname} {url} ( To add a new remote Git repository as a shortname )
+git remote rename {old} {new} (change a remote’s shortname)
+git remote rm {remote name, probably origin} (remove remote alias)
+git remote set-url [--push] {remote name, probably origin} {URL} (--push means change URL for push only, else both push and fetch)(change url of a remote)
+__________________________________________________________________________________________
+
+git clone {URL} [-b {branch or tag}]
+_____________________________________
+
+git pull {URL} (fetch from a remote repo and try to merge into the current branch) (instead of (git fetch + git merge) )
+___________________
+
+git fetch {URL} (download new branches and data from a remote repository)
+_____________________________________________________
+
+CONFLICT RESOLUTION
+
+#list of conflicted files
+git diff --name-only --diff-filter=U
+
+#keep original files without merging, dont forgot to "add" them in next 
+#if there are so many files u can create a bash script file with git commands and run it through terminal
+git checkout --ours index.html
+git checkout --theirs _layouts/default.html
+
+_____________________________________________________
+
+  git checkout -- {file name} (to discard changes in working directory)
+_____________________________________________________________________________  
+  
+  git add * (all on current directory, not recursive (NO SUBDIR.S))
+  git add . (all changed)
+  git add -A  (git add . + git add u)
+  git add -i (add untracked files)
+  It's easy with git add -i. Type a (for "add untracked"), then * (for "all"), then q (to quit) and you're done.
+__________________________________________________________________________________
+  
+  git mv README.txt README (rename file)  
+_____________________________________________  
+  
+  git rm --cached {file name} (unstage a file, will be ingnored in later stagings. (like it is deleted))
+  git rm {file name} (unstage and delete from disk)
+_________________________________________________________________________________________________________
+
+  git commit -a (automatically stage all tracked, modified files before the commit)
+  git commit -am "message here"
+  git commit -m "message here"
+_________________________________________________________________________________________________________
+#undo commits
+  git reset HEAD^ (undo last local commit - default option for reset is --mixed, means this will unstage files too)
+
+#edit commit message - equivalent of git reset --soft HEAD^ + git commit -c ORIG_HEAD
+  git commit --amend (add more with last commit with same old message, result in a single commit)
+  git commit --amend -m "New commit message"
+
+#undo commit and redo with previous message/(or edit the previous message)
+  git reset --soft HEAD~1
+  #add files to stage
+  git commit -C ORIG_HEAD (preserve the last message)
+  git commit -c ORIG_HEAD (edit last message)
+___________________________________________________________________________________________________  
+  
+  git reset HEAD -- {file name to be unstaged}
+  git reset HEAD~1 (keep index, undo files)
+  git reset --soft (undo the last commit)
+  git reset --hard (undo the last commit, unstage files AND undo any changes in the working directory)
+_________________________________________________________________________________________________________  
+
+  git status [-s] (-s for short description)
+_____________________________________________  
+  
+  git diff (more detailed status)
+  git diff --cached [--stat]
+  git diff HEAD [--stat]
+  git diff --stat
+____________________________________  
+  
+  git add (if you want to stash untracked files)
+
+  git stash (add current changes to the stack)
+  git stash list (view stashes currently on the stack)
+  git stash show -p stash@{0} (0 is index on stack)(view changes before apply stash)
+  git stash apply [stash@{1}] (1 is index on stack) (apply changes back to directory)
+  git stash drop [stash@{1}] (1 is index on stack) (remove a stash from list)
+  git stash clear (clear stash)
+______________________________________________________________
+
+git push {remote_name, probably origin} {branch_name}
+git push {remote_name, probably origin} :{remote branchName} (delete remote branch)
+git push {remote_name, probably origin} --tags (push tags)
+______________________________________________________________________________________
+
+**
+git checkout -b {branch name} (create and change to new branch)
+git push {remote name, probbly origin} {local branch renamed}:{remote branch to be deleted} (delete old and add renamed branch on remote)
+
+#list branches
+git branch (list all local branches)
+git branch -r (list all remote branch)
+git branch -a (list all branches (remote + local))
+
+#create branch
+git branch {branch name} (create local branch)
+git push {remote name, probably origin} {remote name}:refs/heads/{new remote branch} (create remote branch directly)
+git checkout -b {branch name} (create and swith to new branch)
+git push {remote name, probably origin} {local branch name}:{remote branch name}
+
+#set to track a remote
+git branch --set-upstream {branch name} {remote name}/{branch name}
+
+#change to a branch
+git checkout [{branch name}] (change HEAD to {branch} if specified, else to master branch)
+
+#rename a branch
+git branch -m/-M {old} {new} (rename branch locally)
+  git push {remote name, probbly origin} :{old name} (then delete old remote branch)
+
+#delete branch
+git branch -d {branch name} (delete local branch)
+git push {remote name} :{remote branchName} (delete remote branch)
+git push {remote name} --delete {remote branchName} ((==) delete remote branch)
+
+#if anyone has already deleted remote branch, use
+git fetch -p (then try deleting remote again)
+_______________________________________________________________________________________________________________________
+
+git tag [-l 'v1.4.2.*'] (list tags) ( looking at the 1.4.2 series)
+git tag -a v1.4 -m 'my version 1.4' (add tag with description)
+git tag -a v1.2 -m 'version 1.2' 9fceb02 (add tag later on particular checksum)
+git push origin --tags (add tags on remote)
+git show v1.4 (view tag)
+__________________________________________________________________________________
+
+git log (all commits)
+ -p, which shows the diff introduced in each commit
+ -2, which limits the output to only the last two entries:
+ --stat, some abbreviated stats for each commit
+ --pretty=oneline
+ --pretty[=format:"%h - %an, %ar : %s"] (Show commits in an alternate format)
+ --since=2.weeks
+ --author
+ --before="2008-11-01"
+
+_____________________________________________________________________________________
+
+git update-index --assume-unchanged <file>
+git update-index --no-assume-unchanged <file>
+git ls-files -v | grep '^[[:lower:]]'
+
+#list newly added files
+git diff --cached --name-only --diff-filter=A
+
+git ls-files -m
+git status -u
+
+_____________________________________________________________________________________
+UNDO
+
+Hard delete unpublished commits
+(if non-fast-forward updates are allowed, this same can be used to delete commits from remote also, beware of consequences)
+<
+git stash
+git reset --hard #hash
+git stash pop
+>
+
+Undo published commits with new commits
+<
+git revert --no-commit #hash1 #hash2 .. #hashn
+git commit -m "revert message"
+>
+
+
+
+http://stackoverflow.com/questions/61212/removing-untracked-files-from-your-git-working-copy
+
+http://stackoverflow.com/questions/180272/how-to-preview-git-pull-without-doing-fetch
+
+http://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-a-git-managed-project-to-previous-state
+
+http://blog.tplus1.com/blog/2011/09/23/undo-a-fast-forward-git-merge/
+
+http://stackoverflow.com/questions/5815448/how-to-just-undo-a-git-pull
