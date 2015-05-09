@@ -2,247 +2,347 @@
 <html lang="">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title>Starter Template for Bootstrap 3.3.4</title>
-	<link rel="shortcut icon" href="">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Starter Template for Bootstrap 3.3.4</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-	<!--[if IE]>
-								<script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
-								<script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
-				<![endif]-->
+    <!--[if IE]>
+    <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        span.comment{
+            margin-top: 10px;
+            background-color: #ebe0c2;
+            display: block;
+        }
+
+        pre span.comment{
+            margin-top: 0;
+            background-color: #fff;
+            display: inline;
+        }
+    </style>
 </head>
 
 <body>
-	<div class="container"><br><br><br>
-<p>
-	*************LEGEND**************** <br>
-*                                 *	<br>
-*     {}    => params             *	<br>
-*     []    => optional           *	<br>
-*     ()    => description        *	<br>
-*     ==    => alternative way    *	<br>
-*     **    => quick              *	<br>
-*                                 *	<br>
+<div class="container"><br><br><br>
+
+    <p>
+<pre>
+*************LEGEND****************
+*                                 *
+*     {}    => params             *
+*     []    => optional           *
+*     ()    => description        *
+*     ==    => alternative way    *
+*     **    => quick              *
+*     #     => comment            *
+*                                 *
 ***********************************
-create .gitignore file on root.
-_______________________________
-</p>
-   <p>
-    Blank lines or lines starting with # are ignored.<br>
-    Standard glob patterns work.<br>
-    You can end patterns with a forward slash (/) to specify a directory.<br>
-    You can negate a pattern by starting it with an exclamation point (!).
-    </p><br>
-<p>
-*.[oa] ( ignore any files ending in .o or .a )<br>
-*~ (gnore all files that end with a tilde (~) )<br>
-# no .a files<br>
-*.a<br>
-# but do track lib.a, even though you're ignoring .a files above<br>
-!lib.a<br>
-# only ignore the root TODO file, not subdir/TODO<br>
-/TODO<br>
-# ignore all files in the build/ directory<br>
-build/
-# ignore doc/notes.txt, but not doc/server/arch.txt<br>
-doc/*.txt
-# ignore all .txt files in the doc/ directory<br>
-doc/**/*.txt
-	</p>
-git init<br>
-_________
-<br>
-git remote [-v] (-v, which shows you the URL) (list all remotes with urls)<br>
-git remote show {remote name, probably origin} (list details about a remote)<br>
-git remote add {shortname} {url} ( To add a new remote Git repository as a shortname )<br>
-git remote rename {old} {new} (change a remote’s shortname)<br>
-git remote rm {remote name, probably origin} (remove remote alias)<br>
-git remote set-url [--push] {remote name, probably origin} {URL} (--push means change URL for push only, else both push and fetch)(change url of a remote)<br>
-__________________________________________________________________________________________ <br>
- 
-git clone {URL} [-b {branch or tag}] <br>
-_____________________________________ <br>
+</pre>
+    <h3>create .gitignore file on root.</h3>
+    <hr/>
+    <code>
+        Blank lines or lines starting with # are ignored.<br>
+        Standard glob patterns work.<br>
+        You can end patterns with a forward slash (/) to specify a directory.<br>
+        You can negate a pattern by starting it with an exclamation point (!).<br>
+    </code>
+    <br><br>
+    <p>
+        <span class="comment"> # ignore any files ending in .o or .a</span>
+        *.[oa]<br>
+        <span class="comment"> # ignore all files that end with a tilde (~)</span>
+        *~<br>
+        <span class="comment"> #  no .a files</span>
+        *.a<br>
+        <span class="comment"> #  but do track lib.a, even though you're ignoring .a files above</span>
+        !lib.a<br>
+        <span class="comment"> #  only ignore the root TODO file, not subdir/TODO</span>
+        /TODO<br>
+        <span class="comment"> #  ignore all files in the build/ directory</span>
+        build/<br>
+        <span class="comment"> #  ignore doc/notes.txt, but not doc/server/arch.txt</span>
+        doc/*.txt<br>
+        <span class="comment"> #  ignore all .txt files in the doc/ directory</span>
+        doc/**/*.txt<br>
+    </p>
 
-git pull {URL} (fetch from a remote repo and try to merge into the current branch) (instead of (git fetch + git merge) ) <br>
-___________________ <br>
- 
-git fetch {URL} (download new branches and data from a remote repository) <br>
-_____________________________________________________ <br>
- 
-CONFLICT RESOLUTION <br>
+    <h3>git init</h3>
+    <hr/>
+    <br>
 
-#list of conflicted files <br>
-git diff --name-only --diff-filter=U <br>
+    <h3>git remote</h3>
+    <hr/>
+    <span class="comment"> # list all remotes with urls</span>
+    <span class="comment"> # (-v, which shows you the URL) </span>
+    git remote [-v]<br>
+    <span class="comment"> # list details about a remote</span>
+    git remote show {remote name, probably origin}<br>
+    <span class="comment"> # To add a new remote Git repository as a shortname</span>
+    git remote add {shortname} {url} <br>
+    <span class="comment"> # change a remote’s shortname</span>
+    git remote rename {old} {new}<br>
+    <span class="comment"> # remove remote alias</span>
+    git remote rm {remote name, probably origin}<br>
+    <span class="comment"> # change url of a remote</span>
+    <span class="comment"> # --push means change URL for push only, else both push and fetch</span>
+    git remote set-url [--push] {remote name, probably origin} {URL}<br>
 
-#keep original files without merging, dont forgot to "add" them in next  <br>
-#if there are so many files u can create a bash script file with git commands and run it through terminal <br>
-git checkout --ours index.html <br>
-git checkout --theirs _layouts/default.html <br>
+    <h3>git clone</h3>
+    <hr/>
+    git clone {URL} [-b {branch or tag}] <br>
 
-_____________________________________________________ <br>
+    <h3>git pull</h3>
+    <hr/>
+    <span class="comment"> # roughly instead of (git fetch + git merge)</span>
+    git pull {URL} (fetch from a remote repo and try to merge into the current branch)<br>
 
-  git checkout -- {file name} (to discard changes in working directory) <br>
-_____________________________________________________________________________   <br>
-  
-  git add * (all on current directory, not recursive (NO SUBDIR.S)) <br>
-  git add . (all changed) <br>
-  git add -A  (git add . + git add u)  <br>
-  git add -i (add untracked files) <br>
-  It's easy with git add -i. Type a (for "add untracked"), then * (for "all"), then q (to quit) and you're done. <br>
-__________________________________________________________________________________ <br>
-  
-  git mv README.txt README (rename file)   <br>
-_____________________________________________  <br>
-   
-  git rm --cached {file name} (unstage a file, will be ingnored in later stagings. (like it is deleted)) <br>
-  git rm {file name} (unstage and delete from disk)<br>
-_________________________________________________________________________________________________________<br>
+    <h3>git fetch</h3>
+    <hr/>
+    <span class="comment"> # download new branches and data from a remote repository </span>
+    git fetch {URL}<br>
 
-  git commit -a (automatically stage all tracked, modified files before the commit)<br>
-  git commit -am "message here"<br>
-  git commit -m "message here"<br>
-_________________________________________________________________________________________________________<br>
-#undo commits
-  git reset HEAD^ (undo last local commit - default option for reset is --mixed, means this will unstage files too)<br>
+    <h2>CONFLICT RESOLUTION</h2>
+    <hr/>
+    <span class="comment"> # list of conflicted files </span>
+    git diff --name-only --diff-filter=U <br>
+    <br>
+    <span class="comment"> # keep original files without merging, dont forgot to "add" them in next </span>
+    <span class="comment"> # if there are so many files u can create a bash script file with git commands and run it through terminal </span>
+    git checkout --ours index.html <br>
+    git checkout --theirs _layouts/default.html <br>
+    <hr>
+    <br>
+    git checkout -- {file name} (to discard changes in working directory) <br>
+    <hr>
+    <h3>git add</h3>
+    <hr/>
+    <span class="comment"> #  all on current directory, not recursive (NO SUBDIR.S)</span>
+    git add *<br>
+    <span class="comment"> #  all changed</span>
+    git add .<br>
+    <span class="comment"> #  git add . + git add u</span>
+    git add -A <br>
+    <span class="comment"> #  Add untracked files</span>
+    git add -i<br>
+    <span class="comment"> #  It's easy with git add -i. Type a (for "add untracked"), then * (for "all"), then q (to quit) and you're done.</span>
+    <br>
 
-#edit commit message - equivalent of git reset --soft HEAD^ + git commit -c ORIG_HEAD<br>
-  git commit --amend (add more with last commit with same old message, result in a single commit)<br>
-  git commit --amend -m "New commit message"<br>
+    <h3>git mv <span class="comment"> # rename a file</h3></span>
+    <hr/>
+    git mv README.txt README<br>
 
-#undo commit and redo with previous message/(or edit the previous message)<br>
-  git reset --soft HEAD~1<br>
-  #add files to stage<br>
-  git commit -C ORIG_HEAD (preserve the last message)<br>
-  git commit -c ORIG_HEAD (edit last message)<br>
-___________________________________________________________________________________________________    <br>
+    <h3>git rm</h3>
+    <hr/>
+    <span class="comment"> # unstage a file, will be ingnored in later stagings. (like it is deleted)</span>
+    git rm --cached {file name} <br>
+    <span class="comment"> # unstage and delete from disk</span>
+    git rm {file name} <br>
 
-  
-  git reset HEAD -- {file name to be unstaged}  <br>
-  git reset HEAD~1 (keep index, undo files)<br>
-  git reset --soft (undo the last commit)<br>
-  git reset --hard (undo the last commit, unstage files AND undo any changes in the working directory)<br>
-_________________________________________________________________________________________________________  <br>
+    <h3>git commit</h3>
+    <hr/>
+    <span class="comment"> # automatically stage all tracked, modified files before the commit</span>
+    git commit -a <br>
+    git commit -am "message here"<br>
+    git commit -m "message here"<br>
 
-  git status [-s] (-s for short description)<br>
-_____________________________________________  
-  <br>
-  git diff (more detailed status)<br>
-  git diff --cached [--stat]<br>
-  git diff HEAD [--stat]<br>
-  git diff --stat<br>
-____________________________________  <br>
-  
-  git add (if you want to stash untracked files)<br>
+    <h2>undo commits</h2>
+    <hr/>
+    <span class="comment"> # undo last local commit</span>
+    <span class="comment"> # default option for reset is --mixed, means this will unstage files too</span>
+    git reset HEAD^ <br>
+    <br>
+    <span class="comment"> # edit commit message == equivalent of git reset --soft HEAD^ + git commit -c ORIG_HEAD</span>
+    <span class="comment"> # add more with last commit with same old message, result in a single commit</span>
+    git commit --amend<br>
+    git commit --amend -m "New commit message"<br>
+    <br>
+    <span class="comment"> # undo commit and redo with previous message/(or edit the previous message)</span>
+<pre>
+git reset --soft HEAD~1
+<span class="comment"> # add files to stage, then</span>
+<span class="comment"> # preserve the last message</span>
+git commit -C ORIG_HEAD
+<span class="comment"> # edit last message</span>
+git commit -c ORIG_HEAD
+</pre>
 
-  git stash (add current changes to the stack)<br>
-  git stash list (view stashes currently on the stack)<br>
-  git stash show -p stash@{0} (0 is index on stack)(view changes before apply stash)<br>
-  git stash apply [stash@{1}] (1 is index on stack) (apply changes back to directory)<br>
-  git stash drop [stash@{1}] (1 is index on stack) (remove a stash from list)<br>
-  git stash clear (clear stash)<br>
-______________________________________________________________
+    <h3>git reset</h3>
+    <hr/>
+    git reset HEAD -- {file name to be unstaged} <br>
+    <span class="comment"> # keep index, undo files</span>
+    git reset HEAD~1<br>
+    <span class="comment"> # undo the last commit</span>
+    git reset --soft<br>
+    <span class="comment"> # undo the last commit, unstage files AND undo any changes in the working directory</span>
+    git reset --hard <br>
 
-git push {remote_name, probably origin} {branch_name}<br>
-git push {remote_name, probably origin} :{remote branchName} (delete remote branch)<br>
-git push {remote_name, probably origin} --tags (push tags)<br>
-______________________________________________________________________________________<br>
+    <h3>git status</h3>
+    <hr/>
+    <span class="comment"> # -s for short description</span>
+    git status [-s]<br>
 
-**
-git checkout -b {branch name} (create and change to new branch)<br>
-git push {remote name, probbly origin} {local branch renamed}:{remote branch to be deleted} (delete old and add renamed branch on remote)<br>
+    <h3>git diff</h3>
+    <hr/>
+    <span class="comment"> # more detailed status</span>
+    git diff<br>
+    git diff --cached [--stat]<br>
+    git diff HEAD [--stat]<br>
+    git diff --stat<br>
 
-#list branches<br>
-git branch (list all local branches)<br>
-git branch -r (list all remote branch)<br>
-git branch -a (list all branches (remote + local))<br>
+    <h3>git stash</h3>
+    <hr/>
+    <span class="comment"> # if you want to stash untracked files</span>
+    git add<br>
+    <br>
+    <span class="comment"> # add current changes to the stack</span>
+    git stash<br>
+    <span class="comment"> # view stashes currently on the stack</span>
+    git stash list<br>
+    <span class="comment"> # view changes before apply stash (0 is index on stack)</span>
+    git stash show -p stash@{0} <br>
+    <span class="comment"> # apply changes back to directory (1 is index on stack)</span>
+    git stash apply [stash@{1}]<br>
+    <span class="comment"> # remove a stash from list (1 is index on stack)</span>
+    git stash drop [stash@{1}]<br>
+    <span class="comment"> # clear stash</span>
+    git stash clear<br>
 
-#create branch<br>
-git branch {branch name} (create local branch)<br>
-git push {remote name, probably origin} {remote name}:refs/heads/{new remote branch} (create remote branch directly)<br>
-git checkout -b {branch name} (create and swith to new branch)<br>
-git push {remote name, probably origin} {local branch name}:{remote branch name}<br>
+    <h3>git push</h3>
+    <hr/>
+    git push {remote_name, probably origin} {branch_name}<br>
+    git push {remote_name, probably origin} :{remote branchName} (delete remote branch)<br>
+    git push {remote_name, probably origin} --tags (push tags)<br>
 
-#set to track a remote<br>
-git branch --set-upstream {branch name} {remote name}/{branch name}<br>
+    <h2>git branch</h2>
+    <hr/>
+    <span class="comment"> # create and change to new branch **</span>
+    git checkout -b {branch name}<br>
+    <span class="comment"> # delete old and add renamed branch on remote</span>
+    git push {remote name, probably origin} {local branch renamed}:{remote branch to be deleted}<br>
+    <br>
+    <span class="comment"> # list branches</span>
+    <span class="comment"> # list all local branches</span>
+    git branch<br>
+    <span class="comment"> # list all remote branch</span>
+    git branch -r <br>
+    <span class="comment"> # list all branches (remote + local)</span>
+    git branch -a <br>
+    <br>
+    <span class="comment"> # create branch</span>
+    <span class="comment"> # create local branch</span>
+    git branch {branch name}<br>
+    <span class="comment"> # create remote branch directly</span>
+    git push {remote name, probably origin} {remote name}:refs/heads/{new remote branch}<br>
+    <span class="comment"> # create and switch to new branch</span>
+    git checkout -b {branch name}<br>
+    git push {remote name, probably origin} {local branch name}:{remote branch name}<br>
 
-#change to a branch<br>
-git checkout [{branch name}] (change HEAD to {branch} if specified, else to master branch)<br>
+    <span class="comment"> # set to track a remote</span>
+    git branch --set-upstream {branch name} {remote name}/{branch name}<br>
 
-#rename a branch<br>
-git branch -m/-M {old} {new} (rename branch locally)<br>
-  git push {remote name, probbly origin} :{old name} (then delete old remote branch)<br>
+    <span class="comment"> # change to a branch</span>
+    <span class="comment"> # change HEAD to {branch} if specified, else to master branch</span>
+    git checkout [{branch name}]<br>
+    <span class="comment"> # rename a branch</span>
+    <span class="comment"> # rename branch locally</span>
+    git branch -m/-M {old} {new}<br>
+    <span class="comment"> # then delete old remote branch</span>
+    git push {remote name, probably origin} :{old name}<br>
+    <br>
+    <span class="comment"> # delete branch</span>
+    <span class="comment"> # delete local branch - after merge</span>
+    git branch -d {branch name}<br>
+    <span class="comment"> # delete local branch</span>
+    git branch -D {branch name}<br>
+    <span class="comment"> # delete remote branch</span>
+    git push {remote name} :{remote branchName}<br>
+    git push {remote name} --delete {remote branchName}<br>
+    <br>
+    <span class="comment"> # if anyone has already deleted remote branch, use</span>
+    git fetch -p<br>
+    <span class="comment"> # then try deleting remote again</span>
 
-#delete branch<br>
-git branch -d {branch name} (delete local branch)<br>
-git push {remote name} :{remote branchName} (delete remote branch)<br>
-git push {remote name} --delete {remote branchName} ((==) delete remote branch)<br>
+    <h3>git tag</h3>
+    <hr/>
+    <span class="comment"> # list tags (looking at the 1.4.2 series)</span>
+    git tag [-l 'v1.4.2.*']<br>
+    <span class="comment"> # add tag with description</span>
+    git tag -a v1.4 -m 'my version 1.4'<br>
+    <span class="comment"> # add tag later on particular checksum</span>
+    git tag -a v1.2 -m 'version 1.2' 9fceb02<br>
+    <span class="comment"> # add tags on remote</span>
+    git push origin --tags<br>
+    <span class="comment"> # view tag</span>
+    git show v1.4<br>
+    <br>
 
-#if anyone has already deleted remote branch, use<br>
-git fetch -p (then try deleting remote again)<br>
-_______________________________________________________________________________________________________________________<br>
+    <h3>git log</h3>
+    <hr/>
+    git log (all commits)<br>
+    <span class="comment"> # -p which shows the diff introduced in each commit</span>
+    -p<br>
+    <span class="comment"> # which limits the output to only the last two entries:</span>
+    -2<br>
+    <span class="comment"> # some abbreviated stats for each commit</span>
+    --stat<br>
+    <span class="comment"> # single line hashes :) :) **</span>
+    --pretty=oneline<br>
+    <span class="comment"> # Show commits in an alternate format</span>
+    --pretty[=format:"%h - %an, %ar : %s"]<br>
+    --since=2.weeks<br>
+    --author<br>
+    --before="2008-11-01"<br>
 
-git tag [-l 'v1.4.2.*'] (list tags) ( looking at the 1.4.2 series)<br>
-git tag -a v1.4 -m 'my version 1.4' (add tag with description)<br>
-git tag -a v1.2 -m 'version 1.2' 9fceb02 (add tag later on particular checksum)<br>
-git push origin --tags (add tags on remote)<br>
-git show v1.4 (view tag)<br>
-__________________________________________________________________________________<br>
+    <h2>Ignore local changes to something like config.json</h2>
 
-git log (all commits)<br>
- -p, which shows the diff introduced in each commit<br>
- -2, which limits the output to only the last two entries:<br>
- --stat, some abbreviated stats for each commit<br>
- --pretty=oneline<br>
- --pretty[=format:"%h - %an, %ar : %s"] (Show commits in an alternate format)<br>
- --since=2.weeks<br>
- --author<br>
- --before="2008-11-01"<br>
+    <h3>remove tracking local changes </h3>
+    <hr/>
+    <span class="comment"> # ignore local changes in file</span>
+    git update-index --assume-unchanged {file}<br>
+    <span class="comment"> # start to track changes again</span>
+    git update-index --no-assume-unchanged {file}<br>
+    <span class="comment"> # list non-tracking local files</span>
+    git ls-files -v | grep '^[[:lower:]]'<br>
+    <span class="comment"> # list newly added files</span>
+    git diff --cached --name-only --diff-filter=A<br>
+    git ls-files -m<br>
+    git status -u<br>
 
-_____________________________________________________________________________________<br>
-
-git update-index --assume-unchanged <file><br>
-git update-index --no-assume-unchanged <file><br>
-git ls-files -v | grep '^[[:lower:]]'<br>
-
-#list newly added files<br>
-git diff --cached --name-only --diff-filter=A<br>
-
-git ls-files -m<br>
-git status -u<br>
-
-_____________________________________________________________________________________<br>
-UNDO
-
-Hard delete unpublished commits<br>
-(if non-fast-forward updates are allowed, this same can be used to delete commits from remote also, beware of consequences)<br>
-<
+    <h2>UNDO</h2>
+    <hr/>
+    <h3>Hard delete unpublished commits</h3>
+    <span class="comment"> # if non-fast-forward updates are allowed, this same can be used to delete commits from remote also, beware of consequences</span>
+<pre>
 git stash
-git reset --hard #hash
+git reset --hard <span class="comment"> # hash</span>
 git stash pop
->
+</pre>
 
-Undo published commits with new commits
-<
-git revert --no-commit #hash1 #hash2 .. #hashn
+    <h3>Undo published commits with new commits</h3>
+<pre>
+git revert --no-commit {hash1 hash2 .. hashN}
 git commit -m "revert message"
-><br>
+</pre>
+    <br>
 
+    <a href="http://stackoverflow.com/questions/61212/removing-untracked-files-from-your-git-working-copy">removing-untracked-files-from-your-git-working-copy</a><br>
 
+    <a href="http://stackoverflow.com/questions/180272/how-to-preview-git-pull-without-doing-fetch">how-to-preview-git-pull-without-doing-fetch</a><br>
 
-http://stackoverflow.com/questions/61212/removing-untracked-files-from-your-git-working-copy<br>
+    <a href="http://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-a-git-managed-project-to-previous-state">revert-all-local-changes</a><br>
 
-http://stackoverflow.com/questions/180272/how-to-preview-git-pull-without-doing-fetch<br>
+    <a href="http://blog.tplus1.com/blog/2011/09/23/undo-a-fast-forward-git-merge/">undo-a-fast-forward-git-merge</a><br>
 
-http://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-a-git-managed-project-to-previous-state<br>
-
-http://blog.tplus1.com/blog/2011/09/23/undo-a-fast-forward-git-merge/<br>
-
-http://stackoverflow.com/questions/5815448/how-to-just-undo-a-git-pull<br><br><br><br>
+    <a href="http://stackoverflow.com/questions/5815448/how-to-just-undo-a-git-pull">just-undo-a-git-pull</a>
+    <br><br><br><br>
 </div>
 </body>
 
