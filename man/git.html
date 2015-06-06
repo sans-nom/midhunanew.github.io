@@ -272,9 +272,11 @@ git commit -c ORIG_HEAD
     <span class="comment"> # if anyone has already deleted remote branch, use</span>
     git fetch -p<br>
     <span class="comment"> # then try deleting remote again</span>
+    git remote prune origin --dry-run<br>
 
     <h3>git tag</h3>
     <hr/>
+    git fetch --tags<br>
     <span class="comment"> # list tags (looking at the 1.4.2 series)</span>
     git tag [-l 'v1.4.2.*']<br>
     <span class="comment"> # add tag with description</span>
@@ -285,6 +287,7 @@ git commit -c ORIG_HEAD
     git push origin --tags<br>
     <span class="comment"> # view tag</span>
     git show v1.4<br>
+    git checkout tags/<tag_name><br>
     <br>
 
     <h3>git log</h3>

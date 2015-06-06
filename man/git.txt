@@ -150,7 +150,7 @@ git checkout [{branch name}] (change HEAD to {branch} if specified, else to mast
 
 #rename a branch
 git branch -m/-M {old} {new} (rename branch locally)
-  git push {remote name, probbly origin} :{old name} (then delete old remote branch)
+git push {remote name, probbly origin} :{old name} (then delete old remote branch)
 
 #delete branch
 git branch -d {branch name} (delete local branch)
@@ -159,13 +159,16 @@ git push {remote name} --delete {remote branchName} ((==) delete remote branch)
 
 #if anyone has already deleted remote branch, use
 git fetch -p (then try deleting remote again)
+git remote prune origin --dry-run
 _______________________________________________________________________________________________________________________
 
+git fetch --tags
 git tag [-l 'v1.4.2.*'] (list tags) ( looking at the 1.4.2 series)
 git tag -a v1.4 -m 'my version 1.4' (add tag with description)
 git tag -a v1.2 -m 'version 1.2' 9fceb02 (add tag later on particular checksum)
 git push origin --tags (add tags on remote)
 git show v1.4 (view tag)
+git checkout tags/<tag_name>
 __________________________________________________________________________________
 
 git log (all commits)
