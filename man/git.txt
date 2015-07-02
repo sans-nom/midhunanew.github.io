@@ -4,7 +4,7 @@
 *     []    => optional           *
 *     ()    => description        *
 *     ==    => alternative way    *
-*     **    => quick              *
+*     ***    => quick             *
 *                                 *
 ***********************************
 create .gitignore file on root.
@@ -55,7 +55,7 @@ CONFLICT RESOLUTION
 #list of conflicted files
 git diff --name-only --diff-filter=U
 
-#keep original files without merging, dont forgot to "add" them in next 
+#keep original files without merging, don't forgot to "add" them in next 
 #if there are so many files u can create a bash script file with git commands and run it through terminal
 git checkout --ours index.html
 git checkout --theirs _layouts/default.html
@@ -75,7 +75,7 @@ ________________________________________________________________________________
   git mv README.txt README (rename file)  
 _____________________________________________  
   
-  git rm --cached {file name} (unstage a file, will be ingnored in later stagings. (like it is deleted))
+  git rm --cached {file name} (unstage a file, will be ignored in later stagings. (like it is deleted))
   git rm {file name} (unstage and delete from disk)
 _________________________________________________________________________________________________________
 
@@ -127,9 +127,9 @@ git push {remote_name, probably origin} :{remote branchName} (delete remote bran
 git push {remote_name, probably origin} --tags (push tags)
 ______________________________________________________________________________________
 
-**
+***
 git checkout -b {branch name} (create and change to new branch)
-git push {remote name, probbly origin} {local branch renamed}:{remote branch to be deleted} (delete old and add renamed branch on remote)
+git push {remote name, probably origin} {local branch renamed}:{remote branch to be deleted} (delete old and add renamed branch on remote)
 
 #list branches
 git branch (list all local branches)
@@ -139,7 +139,7 @@ git branch -a (list all branches (remote + local))
 #create branch
 git branch {branch name} (create local branch)
 git push {remote name, probably origin} {remote name}:refs/heads/{new remote branch} (create remote branch directly)
-git checkout -b {branch name} (create and swith to new branch)
+git checkout -b {branch name} (create and switch to new branch)
 git push {remote name, probably origin} {local branch name}:{remote branch name}
 
 #set to track a remote
@@ -150,7 +150,7 @@ git checkout [{branch name}] (change HEAD to {branch} if specified, else to mast
 
 #rename a branch
 git branch -m/-M {old} {new} (rename branch locally)
-git push {remote name, probbly origin} :{old name} (then delete old remote branch)
+  git push {remote name, probably origin} :{old name} (then delete old remote branch)
 
 #delete branch
 git branch -d {branch name} (delete local branch)
@@ -180,6 +180,9 @@ git log (all commits)
  --since=2.weeks
  --author
  --before="2008-11-01"
+ 
+ 
+ git log -p filename #see the changes in each commit
 
 _____________________________________________________________________________________
 
@@ -206,7 +209,7 @@ git stash pop
 
 Undo published commits with new commits
 <
-git revert --no-commit #hash1 #hash2 .. #hashn
+git revert --no-commit #hash1 #hash2 .. #hashN
 git commit -m "revert message"
 >
 
@@ -221,3 +224,5 @@ http://stackoverflow.com/questions/1146973/how-do-i-revert-all-local-changes-in-
 http://blog.tplus1.com/blog/2011/09/23/undo-a-fast-forward-git-merge/
 
 http://stackoverflow.com/questions/5815448/how-to-just-undo-a-git-pull
+
+http://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning
