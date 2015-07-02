@@ -1,0 +1,111 @@
+terminal
+-------------
+jobs                - see status of jobs / process run in current terminal.
+Ctrl + z            - pause job and send to background.
+bg                  - send process to background.
+disown              - detach process from terminal
+
+nohup foo.sh <script parameters> >& <log_file_name> &
+
+nohup               - continue proocess after logs off.
+>& <log_file_name>  - error & ouput to log file.
+&                   - fork process & run in background.
+
+
+ grep -R "test" /var/x/ #saecrh file content recursively
+ grep -I "test" /var/x/ #skip binary files
+ locate -i "<name>" #search index
+ find /var/www7/  -type f -iname "*quote*" | grep ".txt" #search in folder
+ find . -type f -iname "*.jsx" # find in current folder
+ find ~ -type d -exec chmod +x {} \;
+ find ~ -type f \( -iname '*.mp3' -o -iname '*.ogg' \) > mynewplaylist.m3u
+
+
+
+
+
+phonegap API
+------------
+
+curl -u phonegap@appsbusinesstore.com https://build.phonegap.com/api/v1/apps
+
+phonegap remote login -u phonegap@appsbusinesstore.com -p app2018app
+
+
+phonegap create toobler com.example.toobler HelloToobler
+
+
+phonegap [error] {"error":"app 885713 not found"}
+
+curl -u phonegap@appsbusinesstore.com -X DELETE https://build.phonegap.com/api/v1/apps/885759
+
+
+SCP
+---
+scp /var/www/abs.com/source/node_abs.zip azureuser@168.61.85.68:/var/www/
+
+scp remote_user@remote_host:/path/to/remote/file /path/to/local/file
+
+scp -i laksinEU.pem ubuntu@ec2-176-34-90-127.eu-west-1.compute.amazonaws.com:/var/www/abs.com/Dependencies/abs.zip /var/www/abs.com/Dependencies/MongoDB/dumps/email-Aswathy/abs.zip
+
+scp -i laksinEU.pem /var/www/abs.com/Dependencies/MongoDB/dumps/email-Aswathy/abs.zip ubuntu@ec2-176-34-90-127.eu-west-1.compute.amazonaws.com:/var/www/abs.com/Dependencies/abs.zip
+
+copy from server to local
+scp -i laksinEU.pem ubuntu@ec2-176-34-90-127.eu-west-1.compute.amazonaws.com:/etc/nginx/nginx.conf /home/toobler/Desktop/receive/nginx.conf....
+scp -i tropezcpa.pem ec2-user@ec2-54-88-8-200.compute-1.amazonaws.com:/home/ec2-user/tempDump/ad.zip /home/toobler/Desktop/advisorfiMongo.zip
+
+	
+
+Mongo
+-----
+
+ mongodump --host 127.0.0.1 -d development --port 27017 --username user --password pass --out /opt/backup/mongodump-2013-10-07-1
+ mongodump -d advisorfi --out /home/ec2-user/tempDump/
+
+ mongorestore  --drop --db abs --collection Localizations Localizations.bson
+ #/home/toobler/Desktop/advisorfi contains all .json and .bson files.
+ mongorestore /home/toobler/Desktop/advisorfi/ --drop --db advisorfi
+
+
+ EMPTY file
+ ----------
+
+echo -n > YOURFILE
+cat /dev/null > YOURFILE
+
+SSH
+---
+
+ ssh-copy-id toobler-ranjiba@192.168.2.42
+ ssh 'toobler-ranjiba@192.168.2.42'
+ 
+ssh -X toobler@192.168.2.58 'DISPLAY=:0 notify-send -i /usr/share/icons/hicolor/32x32/apps/skype.png "Ajith -2.13: pls come"'
+
+ssh -X toobler@192.168.2.36 'sudo poweroff'
+
+
+ ZIP
+ ---
+
+ zip bravo4midhun.zip -r bravo.com
+ unzip /var/www/temp/bravo.zip -d /var/www
+ 
+ SHELL
+ -----
+ 
+ ln [options] <target file> [link name]
+ ln -sv /media/fileserver/css
+ 
+ PORT
+ -----
+ lsof -t -i:4444
+
+
+ chmod
+ -----
+ sudo chmod -R 100 *.*
+
+ SHUTDOWN
+ --------
+ sudo poweroff
+ sudo shutdown 18:30
