@@ -62,7 +62,6 @@ function beep() {
                 action = 0;
             }
             if(exceptionCount > 3 && exceptionCount < 8){
-                beep();
                 if(
                     !!$('.uiContextualLayerPositioner:not(.hidden_elem)').length &&
                     !!$('.uiContextualLayerPositioner:not(.hidden_elem) a[data-feed-option-name="NFXHideFromTimelineAction"]').length
@@ -77,6 +76,8 @@ function beep() {
                 action = 1;
             }
             if(exceptionCount > 17){
+            beep();
+            action = 0;
                 console.info("refresh and try again");
                 exceptionCount = 0;
             }
