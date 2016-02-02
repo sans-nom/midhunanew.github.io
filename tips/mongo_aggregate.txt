@@ -1,0 +1,112 @@
+try {
+                var search = (req.query.search) ? req.query.search.trim() : '',
+                    sortField = (req.query.sort) ? req.query.sort.trim() : '',
+                    sortOrder = (req.query.order) ? parseInt(req.query.order.trim()) : 1,
+                    find = {$query: {}},
+                    searchKey;
+
+                var page = (req.query.page) ? parseInt(req.query.page) : 1,
+                    size = (req.query.size) ? parseInt(req.query.size) : 50,
+                    skip = page > 0 ? ((page - 1) * size) : 0;
+
+                if (search.length) {
+                    searchKey = new RegExp(search, 'i');
+                    find.$query = {'$or': [{"email": {$regex: searchKey}}, {"firstName": {$regex: searchKey}}, {"lastName": {$regex: searchKey}}]};
+                }
+
+                console.log(" skip "+skip+" results and get next "+size+" items");
+                console.log( typeof skip);
+                console.log(typeof size);
+
+                if (sortField == "firstName" || sortField == "lastName") {
+                    console.log("find");
+                    console.log(find);
+                    console.log("aggregate");
+                    size = size + skip;
+                    usersDB.aggregate([
+                        {$match: find.$query},
+                        {
+                            "$project": {
+                                //_id:0,
+                                firstName: 1,
+                                email: 1,
+                                source: 1,
+                                role: 1,
+                                image: 1,
+                                signupDate: 1,
+                                fakeEmail: 1,
+                                verified: 1,
+                                visitCount: 1,
+                                reservedEntry: 1,
+                                expressEntry: 1,
+                                gender: 1,
+                                dob: 1,
+                                zip: 1,
+                                state: 1,
+                                city: 1,
+                                address: 1,
+                                phone: 1,
+                                lastName: 1,
+                                "insensitive": {"$toLower": "$" + sortField}
+                            }
+                        },
+                        {"$sort": {"insensitive": 1}},
+                        {$limit: size},
+                        {$skip: skip}
+                    ], function (err, result) {
+                        console.log("aggregate success");
+                        console.log("err");
+                        console.log(err);
+                        console.log("result");
+                        console.log(result.length);
+                        if (err) {
+                            res.send({status: false, error: err})
+                        }
+                        else if (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                if (result[i].signupDate) {
+                                    result[i].signupDate = new Date(result[i].signupDate.getTime() - 18000000);
+                                }
+                            }
+                            usersDB.find({}).count(function (err, totalCount) {
+                                res.render('users', {
+                                    users: result,
+                                    totalUsers: totalCount,
+                                    title: 'Bueno Admin',
+                                    role: req.session.role,
+                                    searchkey: search,
+                                    sortField: sortField,
+                                    sortOrder: sortOrder,
+                                    pageSize: size,
+                                    pageNumber: page
+                                });
+                            });
+                        }
+                        else {
+                            res.send({
+                                status: false,
+                                data: "data not existing in db",
+                                searchkey: search,
+                                sortField: sortField,
+                                sortOrder: sortOrder
+                            })
+                        }
+                    })
+                }
+                else {
+
+                    if (sortField.length) {
+                        find.$orderby = {};
+                        find.$orderby[sortField] = sortOrder;
+                    }
+
+                    console.log("find");
+                    console.log(find);
+
+                    usersDB.find(
+                        find,
+                        null, {
+                            skip: skip,
+                            limit: size
+                        },
+                        function (err, result) {

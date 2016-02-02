@@ -1,0 +1,5 @@
+// get time from MongoDb Object
+//in shell
+ObjectId("55c6db30a336e85d82e825d1").getTimestamp()
+//in console
+new Date(parseInt("55c6db30a336e85d82e825d1".slice(0,8), 16)*1000).toISOString();

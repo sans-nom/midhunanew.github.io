@@ -164,9 +164,15 @@ ________________________________________________________________________________
 
 git fetch --tags
 git tag [-l 'v1.4.2.*'] (list tags) ( looking at the 1.4.2 series)
+
+git tag v1.4
 git tag -a v1.4 -m 'my version 1.4' (add tag with description)
 git tag -a v1.2 -m 'version 1.2' 9fceb02 (add tag later on particular checksum)
+git push origin v1.2
 git push origin --tags (add tags on remote)
+
+git push origin :v1.2
+git tag -d v1.2 
 git show v1.4 (view tag)
 git checkout tags/<tag_name>
 __________________________________________________________________________________

@@ -75,6 +75,7 @@ db.auth('midhun', '192.168.2.49');
 
 echo -n > YOURFILE
 cat /dev/null > YOURFILE
+shred -uvzn 0 file.ext
 
 SSH
 ---
@@ -102,6 +103,14 @@ ssh -X toobler@192.168.2.36 'sudo poweroff'
  PORT
  -----
  lsof -t -i:4444
+ 
+ npm
+ -----
+ sudo npm cache clean -f
+ sudo npm install -g n
+ sudo n stable
+ sudo n
+ npm install node-ses --save -save-exact
 
 
  chmod
