@@ -20,7 +20,8 @@ nohup               - continue proocess after logs off.
  find ~ -type d -exec chmod +x {} \;
  find ~ -type f \( -iname '*.mp3' -o -iname '*.ogg' \) > mynewplaylist.m3u
 
-
+# get folder size
+du -hs  routes/
 
 
 
