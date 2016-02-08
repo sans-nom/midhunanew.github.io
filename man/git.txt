@@ -117,6 +117,7 @@ ____________________________________
   git stash (add current changes to the stack)
   git stash list (view stashes currently on the stack)
   git stash show -p stash@{0} (0 is index on stack)(view changes before apply stash)
+  git stash show -p stash@{0} --name-only ( before apply stash view files that will be changed)
   git stash apply [stash@{1}] (1 is index on stack) (apply changes back to directory)
   git stash drop [stash@{1}] (1 is index on stack) (remove a stash from list)
   git stash clear (clear stash)
