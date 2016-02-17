@@ -49,8 +49,13 @@ ___________________
 
 git fetch {URL} (download new branches and data from a remote repository)
 _____________________________________________________
+#can be fast-forwarded?
 
-CONFLICT RESOLUTION
+git pull origin develop | git fetch
+                        | git merge --ff-only origin/develop
+
+_____________________________________________________
+#CONFLICT RESOLUTION
 
 #list of conflicted files
 git diff --name-only --diff-filter=U

@@ -94,6 +94,8 @@ ssh -X toobler@192.168.2.36 'sudo poweroff'
 
  zip bravo4midhun.zip -r bravo.com
  unzip /var/www/temp/bravo.zip -d /var/www
+
+ tar -xvzf community_images.tar.gz
  
  SHELL
  -----
