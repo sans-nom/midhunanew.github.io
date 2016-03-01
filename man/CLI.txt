@@ -97,6 +97,9 @@ ssh -X toobler@192.168.2.36 'sudo poweroff'
 
  tar -xvzf community_images.tar.gz
  
+# list contetns of a jar file
+ jar tf file.jar
+ 
  SHELL
  -----
  
