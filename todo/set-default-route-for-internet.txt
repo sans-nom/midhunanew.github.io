@@ -1,0 +1,3 @@
+sudo route -n
+sudo ifconfig -a
+ip route show
