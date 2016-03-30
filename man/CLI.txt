@@ -23,7 +23,11 @@ nohup               - continue proocess after logs off.
 # get folder size
 du -hs  routes/
 
+Android
+------------
 
+#check password
+keytool -list -v -keystore keystore
 
 phonegap API
 ------------
@@ -95,6 +99,7 @@ ssh -X toobler@192.168.2.36 'sudo poweroff'
  zip bravo4midhun.zip -r bravo.com
  unzip /var/www/temp/bravo.zip -d /var/www
 
+ # x - extract; v - verbose; z - gzip; f - file
  tar -xvzf community_images.tar.gz
  
 # list contetns of a jar file
