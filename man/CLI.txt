@@ -82,6 +82,11 @@ echo -n > YOURFILE
 cat /dev/null > YOURFILE
 shred -uvzn 0 file.ext
 
+SEE CHANGES AS IT HAPPENS
+-------------------------
+
+tail -f /home/ubuntu/server/tomcat/logs/catalina.out
+
 SSH
 ---
 
