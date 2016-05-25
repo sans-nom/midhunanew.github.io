@@ -137,3 +137,7 @@ ssh -X toobler@192.168.2.36 'sudo poweroff'
  --------
  sudo poweroff
  sudo shutdown 18:30
+
+
+Generate .pem file to login without password-
+ http://askubuntu.com/a/644027/300767

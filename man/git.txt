@@ -222,6 +222,8 @@ git stash pop
 >
 
 Undo published commits with new commits
+WAIT - have you tried to get the file back by
+git checkout #hashOfGood -- <filename>
 <
 git revert --no-commit #hash1 #hash2 .. #hashN
 git commit -m "revert message"
