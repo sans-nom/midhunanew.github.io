@@ -229,7 +229,7 @@ git revert --no-commit #hash1 #hash2 .. #hashN
 git commit -m "revert message"
 >
 
-
+http://nvie.com/posts/a-successful-git-branching-model/
 
 http://stackoverflow.com/questions/61212/removing-untracked-files-from-your-git-working-copy
 
