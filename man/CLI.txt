@@ -25,6 +25,10 @@ du -hs  routes/
 
 Android
 ------------
+#set ANDROID_HOME
+# The folder which contains `tools` and `platform-tools` folders.
+export ANDROID_HOME=/opt/adt-bundle-linux-x86_64-20140702/sdk
+
 
 #check password
 keytool -list -v -keystore keystore
@@ -96,6 +100,13 @@ SSH
 ssh -X toobler@192.168.2.58 'DISPLAY=:0 notify-send -i /usr/share/icons/hicolor/32x32/apps/skype.png "Ajith -2.13: pls come"'
 
 ssh -X toobler@192.168.2.36 'sudo poweroff'
+
+SCREEN
+---
+
+screen -ls
+screen -r id
+Ctrl + A + D
 
 
  ZIP
