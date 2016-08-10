@@ -71,6 +71,8 @@ Mongo
 db.addUser('midhun', '192.168.2.49');
 db.auth('midhun', '192.168.2.49');
 
+db.sessions.update({platform_message:{ "$exists" : false }},{"$set":{"platform_message":"Great you know that already.."}},{multi:true})
+
  mongodump --host 127.0.0.1 -d development --port 27017 --username user --password pass --out /opt/backup/mongodump-2013-10-07-1
  mongodump -d advisorfi --out /home/ec2-user/tempDump/
 
@@ -143,6 +145,13 @@ Ctrl + A + D
  chmod
  -----
  sudo chmod -R 100 *.*
+
+SYSTEM logs - shutdown and start up
+-------------
+last -x | grep shutdown
+sudo nano /etc/default/bootlogd #set BOOTLOGD_ENABLE=Yes
+cat /var/log/kern.log | grep "/proc/kmsg started"
+cat /var/log/kern.log | grep "Kernel logging "
 
  SHUTDOWN
  --------
