@@ -115,6 +115,7 @@ _____________________________________________
   
   git diff (more detailed status)
   git diff --cached [--stat]
+  git diff  --diff-filter=M
   git diff HEAD [--stat]
   git diff --stat
   git diff --name-only HEAD~10 HEAD~5
