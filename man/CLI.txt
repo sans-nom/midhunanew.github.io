@@ -31,7 +31,20 @@ export ANDROID_HOME=/opt/adt-bundle-linux-x86_64-20140702/sdk
 
 
 #check password
-keytool -list -v -keystore keystore
+keytool -list -v -keystore .keystore
+#check signature/finger print
+keytool -list -v -keystore .keystore -storepass choco35 -alias jointly -keypass choco35
+
+Cordova API
+------------
+
+platforms/android/cordova/clean
+cordova build android --release -- --keystore="/path/to/keystore" --storePassword=password --alias=dupName
+adb install -r platforms/android/build/outputs/apk/android-release.apk
+adb shell am start -n org.sf.people/org.sf.people.MainActivity
+#  adb logcat | grep `adb shell ps | grep org.sf.people | cut -c10-15`
+adb logcat | grep "chromium"
+
 
 phonegap API
 ------------
