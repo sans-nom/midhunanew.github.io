@@ -23,6 +23,9 @@ nohup               - continue proocess after logs off.
 # get folder size
 du -hs  routes/
 
+#list DNS servers
+nmcli dev list iface eth0 | grep IP4
+
 Android
 ------------
 #set ANDROID_HOME
@@ -85,6 +88,10 @@ db.addUser('midhun', '192.168.2.49');
 db.auth('midhun', '192.168.2.49');
 
 db.sessions.update({platform_message:{ "$exists" : false }},{"$set":{"platform_message":"Great you know that already.."}},{multi:true})
+
+#csv import
+
+ mongoimport -d domainManagement -c domainList --type csv --file Domain_prices.csv  --headerline
 
  mongodump --host 127.0.0.1 -d development --port 27017 --username user --password pass --out /opt/backup/mongodump-2013-10-07-1
  mongodump -d advisorfi --out /home/ec2-user/tempDump/

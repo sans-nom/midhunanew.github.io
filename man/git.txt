@@ -30,6 +30,12 @@ doc/*.txt
 # ignore all .txt files in the doc/ directory
 doc/**/*.txt
 
+git config
+_________
+
+git config --global color.ui auto
+git config core.filemode true
+
 git init
 _________
 
@@ -248,3 +254,5 @@ http://blog.tplus1.com/blog/2011/09/23/undo-a-fast-forward-git-merge/
 http://stackoverflow.com/questions/5815448/how-to-just-undo-a-git-pull
 
 http://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning
+
+http://stackoverflow.com/questions/10516201/updating-file-permissions-only-in-git
