@@ -26,6 +26,9 @@ du -hs  routes/
 #list DNS servers
 nmcli dev list iface eth0 | grep IP4
 
+#list connection on network
+arp -a
+
 Android
 ------------
 #set ANDROID_HOME
