@@ -209,6 +209,8 @@ git log (all commits)
  --before="2008-11-01"
  
  git log -p filename #see the changes in each commit
+ 
+ git log -p --author="midhun@toobler.com" 2d9b822d...e8488e17 #change between two commits
 
 _____________________________________________________________________________________
 
