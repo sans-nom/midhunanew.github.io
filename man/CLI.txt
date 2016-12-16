@@ -1,4 +1,4 @@
-terminal
+terminal - http://ss64.com/bash/
 -------------
 jobs                - see status of jobs / process run in current terminal.
 Ctrl + z            - pause job and send to background.
@@ -28,6 +28,9 @@ nmcli dev list iface eth0 | grep IP4
 
 #list connection on network
 arp -a
+
+#list only directories
+ls -la | grep ^d
 
 Android
 ------------
