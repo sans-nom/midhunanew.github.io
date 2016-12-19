@@ -224,6 +224,10 @@ git diff --cached --name-only --diff-filter=A
 git ls-files -m
 git status -u
 
+#visualise tree - http://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git
+git log --graph --decorate --oneline
+
+
 _____________________________________________________________________________________
 UNDO
 
