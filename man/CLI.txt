@@ -26,6 +26,9 @@ find . -type d
 
 #check all files are copied --dry-run
 rsync -anvP --ignore-existing /media/Ubuntu116GB-OS2/bin/ /media/My\ Passport/Ubuntu116GB-OS2/bin > op.txt
+# && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
+( cd /media/Ubuntu116GB-OS2/workSpace && find . -type f -exec md5sum {} \; ) > /home/mithoos/Documents/hholtmann.md5sum
+( cd /media/My\ Passport/Ubuntu116GB-OS2/workSpace && md5sum -c /home/mithoos/Documents/hholtmann.md5sum )
 
 # get folder size
 du -hs  routes/
