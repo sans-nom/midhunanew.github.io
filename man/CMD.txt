@@ -1,1 +1,1 @@
-/home/mithoos/Projects/GIT/midhunanew.github.io/man/CLI.txt
+CLI.txt

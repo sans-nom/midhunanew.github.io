@@ -163,7 +163,8 @@ Ctrl + A + D
  -----
  
  ln [options] <target file> [link name]
- ln -sv /media/fileserver/css
+ # create symbolic link and verbose (-r to create relative path)
+ ln -sv /media/fileserver/css 
  
  PORT
  -----
