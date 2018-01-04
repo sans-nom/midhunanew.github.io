@@ -44,6 +44,7 @@ git remote show {remote name, probably origin} (list details about a remote)
 git remote add {shortname} {url} ( To add a new remote Git repository as a shortname )
 git remote rename {old} {new} (change a remote’s shortname)
 git remote rm {remote name, probably origin} (remove remote alias)
+# change remote url
 git remote set-url [--push] {remote name, probably origin} {URL} (--push means change URL for push only, else both push and fetch)(change url of a remote)
 __________________________________________________________________________________________
 
