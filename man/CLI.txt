@@ -1,3 +1,29 @@
+file-systems
+-------------
+
+# list block devices (like hdd)
+lsblk
+
+# list partition tables and file system with boot indication
+sudo fdisk -lu
+
+# automatic mounting configuration
+cat /etc/fstab
+
+# check mounted volumes details
+sudo mount
+
+# mount a volume
+sudo mount /dev/sda1 /media/newhd
+
+# unmount by device or mount point
+sudo umount /dev/sda1
+sudo umount /media/newhd
+
+# file system disk space usage
+df -h
+
+ 
 terminal - http://ss64.com/bash/
 -------------
 jobs                - see status of jobs / process run in current terminal.
@@ -11,7 +37,8 @@ nohup               - continue proocess after logs off.
 >& <log_file_name>  - error & ouput to log file.
 &                   - fork process & run in background.
 
-
+search or find
+-------------
  grep -R "test" /var/x/ #saecrh file content recursively
  grep -I "test" /var/x/ #skip binary files
  locate -i "<name>" #search index
