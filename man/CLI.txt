@@ -57,6 +57,10 @@ rsync -anvP --ignore-existing /media/Ubuntu116GB-OS2/bin/ /media/My\ Passport/Ub
 ( cd /media/Ubuntu116GB-OS2/workSpace && find . -type f -exec md5sum {} \; ) > /home/mithoos/Documents/hholtmann.md5sum
 ( cd /media/My\ Passport/Ubuntu116GB-OS2/workSpace && md5sum -c /home/mithoos/Documents/hholtmann.md5sum )
 
+# see file modification time
+stat -c '%y' file.txt
+date -d "@$(stat -c '%Y' file.txt)" '+%a %b %d %Y%t%R:%S:%N%t%Z(%:z)'
+
 # get folder size
 du -hs  routes/
 
