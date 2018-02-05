@@ -144,12 +144,14 @@ db.sessions.update({platform_message:{ "$exists" : false }},{"$set":{"platform_m
  mongorestore /home/toobler/Desktop/advisorfi/ --drop --db advisorfi
 
 
- EMPTY file
+ EMPTY (clear) file content
  ----------
 
 echo -n > YOURFILE
 cat /dev/null > YOURFILE
 shred -uvzn 0 file.ext
+# If you have no permission
+sudo bash -c "> /var/log/mongodb/mongod.log"
 
 SEE CHANGES AS IT HAPPENS
 -------------------------
