@@ -126,7 +126,17 @@ copy from server to local
 scp -i laksinEU.pem ubuntu@ec2-176-34-90-127.eu-west-1.compute.amazonaws.com:/etc/nginx/nginx.conf /home/toobler/Desktop/receive/nginx.conf....
 scp -i tropezcpa.pem ec2-user@ec2-54-88-8-200.compute-1.amazonaws.com:/home/ec2-user/tempDump/ad.zip /home/toobler/Desktop/advisorfiMongo.zip
 
-	
+MySQL
+-----
+#import csv file
+  mysqlimport --ignore-lines=1 \
+            --fields-terminated-by=, \
+            --verbose \
+            --fields-enclosed-by='"' \
+             --lines-terminated-by="\\n"\
+            --local -u root \
+            -p db_name \
+             TABLE-NAME.csv
 
 Mongo
 -----
