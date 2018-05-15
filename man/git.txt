@@ -34,6 +34,7 @@ git config
 _________
 
 git config --global color.ui auto
+git config --global diff.tool meld
 git config core.filemode true
 
 git init
@@ -63,6 +64,8 @@ git pull origin develop | git fetch
 
 _____________________________________________________
 #CONFLICT RESOLUTION
+
+git difftool
 
 #list of conflicted files
 git diff --name-only --diff-filter=U
