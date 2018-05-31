@@ -30,6 +30,13 @@ doc/*.txt
 # ignore all .txt files in the doc/ directory
 doc/**/*.txt
 
+git config
+_________
+
+git config --global color.ui auto
+git config --global diff.tool meld
+git config core.filemode true
+
 git init
 _________
 
@@ -38,6 +45,7 @@ git remote show {remote name, probably origin} (list details about a remote)
 git remote add {shortname} {url} ( To add a new remote Git repository as a shortname )
 git remote rename {old} {new} (change a remote’s shortname)
 git remote rm {remote name, probably origin} (remove remote alias)
+# change remote url
 git remote set-url [--push] {remote name, probably origin} {URL} (--push means change URL for push only, else both push and fetch)(change url of a remote)
 __________________________________________________________________________________________
 
@@ -49,8 +57,15 @@ ___________________
 
 git fetch {URL} (download new branches and data from a remote repository)
 _____________________________________________________
+#can be fast-forwarded?
 
-CONFLICT RESOLUTION
+git pull origin develop | git fetch
+                        | git merge --ff-only origin/develop
+
+_____________________________________________________
+#CONFLICT RESOLUTION
+
+git difftool
 
 #list of conflicted files
 git diff --name-only --diff-filter=U
@@ -104,13 +119,16 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________  
 
   git status [-s] (-s for short description)
-  git status -uno (hide untracked files)
+  #hide untracked files 
+  git status -uno | git status --untracked-files=no
 _____________________________________________  
   
   git diff (more detailed status)
   git diff --cached [--stat]
+  git diff  --diff-filter=M
   git diff HEAD [--stat]
   git diff --stat
+  git diff --name-only HEAD~10 HEAD~5
 ____________________________________  
   
   git add (if you want to stash untracked files)
@@ -118,6 +136,7 @@ ____________________________________
   git stash (add current changes to the stack)
   git stash list (view stashes currently on the stack)
   git stash show -p stash@{0} (0 is index on stack)(view changes before apply stash)
+  git stash show -p stash@{0} --name-only ( before apply stash view files that will be changed)
   git stash apply [stash@{1}] (1 is index on stack) (apply changes back to directory)
   git stash drop [stash@{1}] (1 is index on stack) (remove a stash from list)
   git stash clear (clear stash)
@@ -165,37 +184,56 @@ ________________________________________________________________________________
 
 git fetch --tags
 git tag [-l 'v1.4.2.*'] (list tags) ( looking at the 1.4.2 series)
+
+git tag v1.4
 git tag -a v1.4 -m 'my version 1.4' (add tag with description)
 git tag -a v1.2 -m 'version 1.2' 9fceb02 (add tag later on particular checksum)
+git push origin v1.2
 git push origin --tags (add tags on remote)
+
+git push origin :v1.2
+git tag -d v1.2 
 git show v1.4 (view tag)
 git checkout tags/<tag_name>
 __________________________________________________________________________________
+
+#example 
+git log --author "midhunanew@gmail.com" --stat
+
 
 git log (all commits)
  -p, which shows the diff introduced in each commit
  -2, which limits the output to only the last two entries:
  --stat, some abbreviated stats for each commit
  --pretty=oneline
+ --pretty=fuller
  --pretty[=format:"%h - %an, %ar : %s"] (Show commits in an alternate format)
  --since=2.weeks
  --author
  --before="2008-11-01"
  
- 
  git log -p filename #see the changes in each commit
+ 
+ git log -p --author="midhun@toobler.com" 2d9b822d...e8488e17 #change between two commits
 
 _____________________________________________________________________________________
 
 git update-index --assume-unchanged <file>
+git update-index --skip-worktree default_values.txt
 git update-index --no-assume-unchanged <file>
+git update-index --no-skip-worktree default_values.txt
 git ls-files -v | grep '^[[:lower:]]'
+git ls-files -v . | grep ^S
 
 #list newly added files
 git diff --cached --name-only --diff-filter=A
 
 git ls-files -m
 git status -u
+
+#visualise tree - http://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git
+git log --graph --decorate --oneline
+
 
 _____________________________________________________________________________________
 UNDO
@@ -209,12 +247,14 @@ git stash pop
 >
 
 Undo published commits with new commits
+WAIT - have you tried to get the file back by
+git checkout #hashOfGood -- <filename>
 <
 git revert --no-commit #hash1 #hash2 .. #hashN
 git commit -m "revert message"
 >
 
-
+http://nvie.com/posts/a-successful-git-branching-model/
 
 http://stackoverflow.com/questions/61212/removing-untracked-files-from-your-git-working-copy
 
@@ -227,3 +267,5 @@ http://blog.tplus1.com/blog/2011/09/23/undo-a-fast-forward-git-merge/
 http://stackoverflow.com/questions/5815448/how-to-just-undo-a-git-pull
 
 http://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning
+
+http://stackoverflow.com/questions/10516201/updating-file-permissions-only-in-git
