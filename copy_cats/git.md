@@ -35,6 +35,7 @@ _________
 
 git config --global color.ui auto
 git config --global diff.tool meld
+git config --global difftool.prompt false
 git config core.filemode true
 
 git init
