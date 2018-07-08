@@ -1,32 +1,32 @@
 pstree
 
-file-systems
+# file-systems
 -------------
 
-# list block devices (like hdd)
+## list block devices (like hdd)
 lsblk
 
-# list partition tables and file system with boot indication
+## list partition tables and file system with boot indication
 sudo fdisk -lu
 
-# automatic mounting configuration
+## automatic mounting configuration
 cat /etc/fstab
 
-# check mounted volumes details
+## check mounted volumes details
 sudo mount
 
-# mount a volume
+## mount a volume
 sudo mount /dev/sda1 /media/newhd
 
-# unmount by device or mount point
+## unmount by device or mount point
 sudo umount /dev/sda1
 sudo umount /media/newhd
 
-# file system disk space usage
+## file system disk space usage
 df -h
 
  
-terminal - http://ss64.com/bash/
+# terminal - http://ss64.com/bash/
 -------------
 jobs                - see status of jobs / process run in current terminal.
 Ctrl + z            - pause job and send to background.
@@ -39,7 +39,7 @@ nohup               - continue proocess after logs off.
 >& <log_file_name>  - error & ouput to log file.
 &                   - fork process & run in background.
 
-search or find
+# search or find
 -------------
  grep -R "test" /var/x/ #saecrh file content recursively
  grep -I "test" /var/x/ #skip binary files
@@ -49,45 +49,45 @@ search or find
  find ~ -type d -exec chmod +x {} \;
  find ~ -type f \( -iname '*.mp3' -o -iname '*.ogg' \) > mynewplaylist.m3u
 
-#list subfolders
+## list subfolders
 du
 find . -type d
 
 #check all files are copied --dry-run (-n) Use -z for network-compression, --exclude=*.amr
 rsync -anvP --ignore-existing /media/Ubuntu116GB-OS2/bin/ /media/My\ Passport/Ubuntu116GB-OS2/bin > op.txt
-# && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
+## && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
 ( cd /media/Ubuntu116GB-OS2/workSpace && find . -type f -exec md5sum {} \; ) > /home/mithoos/Documents/hholtmann.md5sum
 ( cd /media/My\ Passport/Ubuntu116GB-OS2/workSpace && md5sum -c /home/mithoos/Documents/hholtmann.md5sum )
 
-# see file modification time
+## see file modification time
 stat -c '%y' file.txt
 date -d "@$(stat -c '%Y' file.txt)" '+%a %b %d %Y%t%R:%S:%N%t%Z(%:z)'
 
-# get folder size
+## get folder size
 du -hs  routes/
 
-#list DNS servers
+## list DNS servers
 nmcli dev list iface eth0 | grep IP4
 
-#list connection on network
+## list connection on network
 arp -a
 
-#list only directories
+## list only directories
 ls -la | grep ^d
 
-Android
+# Android
 ------------
-#set ANDROID_HOME
-# The folder which contains `tools` and `platform-tools` folders.
+## set ANDROID_HOME
+##  The folder which contains `tools` and `platform-tools` folders.
 export ANDROID_HOME=/opt/adt-bundle-linux-x86_64-20140702/sdk
 
 
-#check password
+## check password
 keytool -list -v -keystore .keystore
-#check signature/finger print
+## check signature/finger print
 keytool -list -v -keystore .keystore -storepass choco35 -alias jointly -keypass choco35
 
-Cordova API
+# Cordova API
 ------------
 
 platforms/android/cordova/clean
@@ -98,7 +98,7 @@ adb shell am start -n org.sf.people/org.sf.people.MainActivity
 adb logcat | grep "chromium"
 
 
-phonegap API
+# phonegap API
 ------------
 
 curl -u phonegap@appsbusinesstore.com https://build.phonegap.com/api/v1/apps
@@ -114,7 +114,7 @@ phonegap [error] {"error":"app 885713 not found"}
 curl -u phonegap@appsbusinesstore.com -X DELETE https://build.phonegap.com/api/v1/apps/885759
 
 
-SCP
+# SCP
 ---
 scp /var/www/abs.com/source/node_abs.zip azureuser@168.61.85.68:/var/www/
 
@@ -128,9 +128,9 @@ copy from server to local
 scp -i laksinEU.pem ubuntu@ec2-176-34-90-127.eu-west-1.compute.amazonaws.com:/etc/nginx/nginx.conf /home/toobler/Desktop/receive/nginx.conf....
 scp -i tropezcpa.pem ec2-user@ec2-54-88-8-200.compute-1.amazonaws.com:/home/ec2-user/tempDump/ad.zip /home/toobler/Desktop/advisorfiMongo.zip
 
-MySQL
+# MySQL
 -----
-#import csv file
+## import csv file
   mysqlimport --ignore-lines=1 \
             --fields-terminated-by=, \
             --verbose \
@@ -140,7 +140,7 @@ MySQL
             -p db_name \
              TABLE-NAME.csv
 
-Mongo
+# Mongo
 -----
 
 db.addUser('midhun', '192.168.2.49');
@@ -148,7 +148,7 @@ db.auth('midhun', '192.168.2.49');
 
 db.sessions.update({platform_message:{ "$exists" : false }},{"$set":{"platform_message":"Great you know that already.."}},{multi:true})
 
-#csv import
+## csv import
 
  mongoimport -d domainManagement -c domainList --type csv --file Domain_prices.csv  --headerline
 
@@ -160,28 +160,28 @@ db.sessions.update({platform_message:{ "$exists" : false }},{"$set":{"platform_m
  mongorestore /home/toobler/Desktop/advisorfi/ --drop --db advisorfi
 
 
- EMPTY (clear) file content
+# EMPTY (clear) file content
  ----------
 
 echo -n > YOURFILE
 cat /dev/null > YOURFILE
 shred -uvzn 0 file.ext
-# If you have no permission
+## If you have no permission
 sudo bash -c "> /var/log/mongodb/mongod.log"
 
-SEE CHANGES AS IT HAPPENS
+# SEE CHANGES AS IT HAPPENS
 -------------------------
 
 tail -f /home/ubuntu/server/tomcat/logs/catalina.out
 
-CRON
+# CRON
 ----
 
 crontab -e
 */1 * * * * eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME gnome-session)/environ)";/usr/bin/notify-send -i  appointment  -c "im" "Cron Working"
 crontab -l
 
-SSH
+# SSH
 ---
 
  ssh-copy-id toobler-ranjiba@192.168.2.42
@@ -192,7 +192,7 @@ ssh -X toobler@192.168.2.58 'DISPLAY=:0 notify-send -i /usr/share/icons/hicolor/
 
 ssh -X toobler@192.168.2.36 'sudo poweroff'
 
-SCREEN
+# SCREEN
 ---
 
 screen -ls
@@ -200,7 +200,7 @@ screen -r id
 Ctrl + A + D
 
 
- ZIP
+# ZIP
  ---
 
  zip bravo4midhun.zip -r bravo.com
@@ -209,21 +209,21 @@ Ctrl + A + D
  # x - extract; v - verbose; z - gzip; f - file
  tar -xvzf community_images.tar.gz
  
-# list contetns of a jar file
+ # list contetns of a jar file
  jar tf file.jar
  
- SHELL
+ # SHELL
  -----
  
  ln [options] <target-file> <link-name>
  # s -symbolic_link; v - verbose; r - relative path
  ln -svr CLI.md CLI.txt
  
- PORT
+ # PORT
  -----
  lsof -t -i:4444
  
- npm
+ # npm
  -----
  sudo npm cache clean -f
  sudo npm install -g n
@@ -232,22 +232,24 @@ Ctrl + A + D
  npm install node-ses --save -save-exact
 
 
- chmod
+ # chmod
  -----
  sudo chmod -R 100 *.*
 
-SYSTEM logs - shutdown and start up
+# SYSTEM logs - shutdown and start up
 -------------
 last -x | grep shutdown
 sudo nano /etc/default/bootlogd #set BOOTLOGD_ENABLE=Yes
 cat /var/log/kern.log | grep "/proc/kmsg started"
 cat /var/log/kern.log | grep "Kernel logging "
 
- SHUTDOWN
+ # SHUTDOWN
  --------
  sudo poweroff
  sudo shutdown 18:30
 
+# MISC
+---
 
-Generate .pem file to login without password-
+## Generate .pem file to login without password-
  http://askubuntu.com/a/644027/300767
