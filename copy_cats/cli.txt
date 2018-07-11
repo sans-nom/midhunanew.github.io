@@ -113,6 +113,13 @@ phonegap [error] {"error":"app 885713 not found"}
 
 curl -u phonegap@appsbusinesstore.com -X DELETE https://build.phonegap.com/api/v1/apps/885759
 
+# Safe user
+-----------
+
+https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
+
+su - safeuser
+
 
 # SCP
 ---
