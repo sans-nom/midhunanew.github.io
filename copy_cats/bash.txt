@@ -1,0 +1,2 @@
+## split word by : and get last part
+echo ${foo##*:}
