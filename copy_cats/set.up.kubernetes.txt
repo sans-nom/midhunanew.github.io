@@ -1,0 +1,56 @@
+# git clone https://github.com/kubernetes/kubernetes.git
+sudo su
+apt-get update && apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
+export VERSION=18.06 && curl -sSL get.docker.com | sh
+# WAIT! MASTER WORKER DIVERSION HERE, IF MASTER
+kubeadm init --pod-network-cidr=10.244.0.0/16
+kubeadm config images pull
+kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=NumCPU
+exit
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+
+# IF WORKER, OPEN PORTS ON MASTER AND WORKER  see https://kubernetes.io/docs/setup/independent/install-kubeadm/#check-required-ports
+kubeadm join 172.31.17.99:6443 --token yrq4mz.26f13zn5wk25ebwm --discovery-token-ca-cert-hash sha256:26130d17763aeb03ab99638f39aa7ee184c18ac85fff767ef5a60ae8483989ee
+
+kubectl get nodes
+NAME               STATUS   ROLES    AGE     VERSION
+ip-172-31-17-99    Ready    master   3d1h    v1.13.3
+ip-172-31-25-138   Ready    <none>   2m32s   v1.13.3
+
+
+# Failed to request cluster info, will try again:
+# open required ports on master and node
+# unable to fetch the kubeadm-config ConfigMap: failed to get config map: Unauthorized
+kubeadm token list --> kubeadm token create
+
+
+# add user to sudo group
+sudo usermod -aG docker ${USER}
+
+
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/namespace.yaml | kubectl apply -f -
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/default-backend.yaml | kubectl apply -f -
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/configmap.yaml | kubectl apply -f -
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/tcp-services-configmap.yaml | kubectl apply -f -
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/udp-services-configmap.yaml | kubectl apply -f -
+
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/rbac.yaml | kubectl apply -f -
+curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/with-rbac.yaml | kubectl apply -f -
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/aws/service-l4.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/provider/aws/patch-configmap-l4.yaml
+
+
+kubectl patch svc ingress-nginx -n ingress-nginx -p '{"spec": {"type": "LoadBalancer", "externalIPs":["172.31.15.139"]}}'
+

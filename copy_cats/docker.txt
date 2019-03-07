@@ -1,0 +1,118 @@
+https://docs.docker.com/engine/reference/builder/
+
+# to use without sudo, run and login again
+sudo usermod -aG docker ${USER}
+
+# for container there is name (which may assign automatically)
+# for images there can be repository:tag (latest tag is a specail one)
+
+# for availability across cluster, we may set up a private docker registry like the public one Docker hub
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04
+
+#for more commands
+https://github.com/wsargent/docker-cheat-sheet
+
+docker --version
+
+docker info
+
+# see ifo about containers 
+docker inspect <containerID>
+docker inspect 53c18ad7ae09
+
+# search images available on Docker hub
+docker search node
+
+#lsit all images
+docker images -a
+
+# list active containers
+docker ps | docker container ls
+
+# list all containers
+docker ps -a
+
+#list all stopped containers
+docker ps -a -q
+
+# see last built container
+docker ps -l
+
+#you can start a container by `start` or run an image by `run`
+docker start <containerID>
+
+# create from Dockerfile and tag with repository:tag see last param is directory
+docker build -t repository:tag /path/to/dir/contains/Dockerfile
+docker build -t localhost:63033/ln0t12089/000000000032856-nad-gitlab-microservice/np03anzw75-7783:57ee01095678546a2c6d14c99bd055b59ac42e8f .
+
+# list images
+docker images
+    REPOSITORY                                                                          TAG                                        IMAGE ID            CREATED             SIZE
+    localhost:63033/ln0t12089/000000000032856-nad-gitlab-microservice/np03anzw75-7783   57ee01095678546a2c6d14c99bd055b59ac42e8f   7e023a395435        9 minutes ago       928MB
+    
+#tag current image to different repository
+docker tag old_repository:tag new_repository:tag
+docker tag localhost:63033/ln0t12089/000000000032856-nad-gitlab-microservice/np03anzw75-7783:57ee01095678546a2c6d14c99bd055b59ac42e8f node-responder:latest
+
+docker tag <imageID> repo/project:tag
+
+#if you tag with `latest` you can start without tag, see above command
+docker run node-responder
+
+#it may also check Docker hub, pull image from there
+docker run hello-world
+    
+#to start either by repository:tag
+docker run localhost:63033/ln0t12089/000000000032856-nad-gitlab-microservice/np03anzw75-7783:57ee01095678546a2c6d14c99bd055b59ac42e8f
+
+#or start by imageID
+docker run 7e023a395435
+
+# run with interactive terminal
+docker run -it ubuntu
+
+# and assign a name to container
+docker run --name new_name 7e023a395435
+
+# bind an ext port: int port
+docker run --rm -p 63033:63033 0605c0ae4674
+
+# check port bindings <name> is getting from `NAMES` section of `docker ps`
+docker port frosty_robinson
+    63033/tcp -> 0.0.0.0:63033
+
+#run by imageID and detach 
+docker run -d 7e023a395435
+
+# attach to running contianer    
+docker attach <containerID>
+docker attach e30e4377f762
+
+#stop by contianer ID
+docker stop 45f0dc020717
+
+#remove image by imageID
+docker rmi <imageID>
+docker image rm <imageid>
+docker image rm ad236e1ca9e9
+
+# history of an images
+docker history <imageID>
+
+#final expectation
+docker run -d --rm -p 63033:63033 node-responder
+
+#commit changes to image
+docker commit -m "latest fixed version" -a "your name" <containerID> "repo/name like localhost/logginservice"
+
+# start a terminal with running container
+docker exec -it <containerID> /bin/bash
+
+#capture docker content from container
+docker export <containerID> > latest.tar
+
+#capture docker content from image
+docker save <imageID> > latest.tar
+
+# create image from tar archive 
+docker load -i image.tar

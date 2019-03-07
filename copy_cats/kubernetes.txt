@@ -1,0 +1,245 @@
+TRY THIS
+
+https://stackoverflow.com/a/41372829/1923045
+
+https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
+
+# see shortnames
+kubectl api-resources
+
+# get ingresses
+kubectl get ing
+
+POD_NAMESPACE=ingress-nginx
+POD_NAME=$(kubectl get pods -n $POD_NAMESPACE -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -it $POD_NAME -n $POD_NAMESPACE -- /nginx-ingress-controller --version
+-------------------------------------------------------------------------------
+NGINX Ingress controller
+  Release:    0.22.0
+  Build:      git-f7c42b78a
+  Repository: https://github.com/kubernetes/ingress-nginx
+-------------------------------------------------------------------------------
+
+
+# reset kubernetes - see https://github.com/kubernetes/kubeadm/issues/212#issuecomment-291413672
+
+
+
+kubeadm reset
+iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+rm -rf ~/.kube
+systemctl stop kubelet
+systemctl stop docker
+# etcdctl rm --recursive registry
+rm -rf /run/flannel
+# brctl delbr cni0
+rm -rf /var/lib/cni/
+rm -rf /var/lib/kubelet/*
+rm -rf /etc/cni/
+ifconfig cni0 down
+ifconfig flannel.1 down
+ifconfig docker0 down
+
+
+
+# failed to set bridge addr: "cni0" already has an IP address different from 10.244.0.1/24 - see https://github.com/kubernetes/kubernetes/issues/39557#issuecomment-342604193
+ip link delete cni0 
+ip link delete flannel.1
+
+
+uname -a
+ip link
+sudo cat /sys/class/dmi/id/product_uuid
+dpkg -l |grep kube
+
+# after installing kubeadm - https://kubernetes.io/docs/setup/independent/install-kubeadm/
+cat /var/lib/kubelet/kubeadm-flags.env 
+            KUBELET_KUBEADM_ARGS=--cgroup-driver=cgroupfs --network-plugin=cni --pod-infra-container-image=k8s.gcr.io/pause:3.1
+
+# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.0.30
+sudo kubeadm init --pod-network-cidr=172.17.0.1/16 --apiserver-advertise-address=192.168.0.7 --kubernetes-version stable-1.13
+
+#follow steps shown in output of above command till creating flannel
+
+ mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+#copy and keep  kubeadm join command
+
+ kubeadm join 192.168.0.30:6443 --token uq7czq.0iineqzygxbe1sjq --discovery-token-ca-cert-hash sha256:5907023f55316669b1c3acf1cc4938051c3bd262f68c6a441c93386e9a1dedb8
+
+cat /proc/sys/net/bridge/bridge-nf-call-iptables
+            1 # if not set sysctl net.bridge.bridge-nf-call-iptables=1 more info https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/#pod-network
+            
+# Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "kubernetes")
+export KUBECONFIG=/home/ubuntu/.kube/config
+
+kubectl create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+
+kubectl describe pods coredns-86c58d9df4-6k264
+# Error from server (NotFound): pods "coredns-86c58d9df4-6k264" not found, then 
+kubectl  -n kube-system describe pod coredns-86c58d9df4-j7x84
+
+# if you found Container image "k8s.gcr.io/coredns:1.2.6" already present on machine delete the coredns-86c58d9df4-* on master (both was running at slave)
+ kubectl  -n kube-system delete pod coredns-86c58d9df4-6kbjq  
+
+kubectl version
+kubectl version --short
+kubectl cluster-info
+
+            Kubernetes master is running at https://192.168.0.62:6443
+            KubeDNS is running at https://192.168.0.62:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+kubectl get no -o wide
+            NAME              STATUS   ROLES    AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION   CONTAINER-RUNTIME
+            ip-192-168-0-62   Ready    master   64m   v1.13.3   192.168.0.62   <none>        Ubuntu 16.04.5 LTS   4.4.0-1067-aws   docker://18.6.1
+
+kubectl get nodes
+            NAME              STATUS     ROLES    AGE     VERSION
+            ec2amaz-s6rab2p   NotReady   <none>   2d18h   v1.13.2
+            ip-192-168-0-30   Ready      <none>   2d18h   v1.13.2
+            ip-192-168-0-37   Ready      master   2d18h   v1.13.2
+
+# check rbac enabled
+kubectl api-versions | grep rbac
+
+kubectl describe nodes <NAME>
+kubectl get pods --show-labels
+# see daemonsets
+kubectl get ds --all-namespaces -o wide
+kubectl get pods --all-namespaces -o wide
+            NAMESPACE     NAME                                      READY   STATUS              RESTARTS   AGE
+            default       liveness-exec                             0/1     ContainerCreating   0          7m57s
+            kube-system   coredns-86c58d9df4-5vt9r                  0/1     ContainerCreating   0          29m
+            kube-system   coredns-86c58d9df4-rmpgg                  0/1     ContainerCreating   0          29m
+            kube-system   etcd-ip-192-168-0-37                      1/1     Running             0          29m
+            kube-system   kube-apiserver-ip-192-168-0-37            1/1     Running             0          28m
+            kube-system   kube-controller-manager-ip-192-168-0-37   1/1     Running             0          28m
+            kube-system   kube-flannel-ds-amd64-hq2bk               0/1     Init:0/1            0          16m
+            kube-system   kube-flannel-ds-amd64-mf65m               1/1     Running             0          28m
+            kube-system   kube-flannel-ds-amd64-mtxsb               1/1     Running             0          29m
+            kube-system   kube-proxy-5tnrl                          0/1     ContainerCreating   0          16m
+            kube-system   kube-proxy-bptkm                          1/1     Running             0          28m
+            kube-system   kube-proxy-kwfnx                          1/1     Running             0          29m
+            kube-system   kube-scheduler-ip-192-168-0-37            1/1     Running             0          28m
+            
+kubectl get pods --all-namespaces -o wide
+            NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE   IP             NODE              NOMINATED NODE   READINESS GATES
+            kube-system   coredns-86c58d9df4-pc9m5                 1/1     Running   0          15h   172.17.0.5     ip-192-168-0-7    <none>           <none>
+            kube-system   coredns-86c58d9df4-smz6c                 1/1     Running   0          15h   172.17.0.4     ip-192-168-0-7    <none>           <none>
+            kube-system   etcd-ip-192-168-0-7                      1/1     Running   0          15h   192.168.0.7    ip-192-168-0-7    <none>           <none>
+            kube-system   kube-apiserver-ip-192-168-0-7            1/1     Running   0          15h   192.168.0.7    ip-192-168-0-7    <none>           <none>
+            kube-system   kube-controller-manager-ip-192-168-0-7   1/1     Running   0          15h   192.168.0.7    ip-192-168-0-7    <none>           <none>
+            kube-system   kube-flannel-ds-amd64-njfxr              1/1     Running   0          15h   192.168.0.7    ip-192-168-0-7    <none>           <none>
+            kube-system   kube-flannel-ds-amd64-tb9hh              1/1     Running   0          15h   192.168.0.30   ip-192-168-0-30   <none>           <none>
+            kube-system   kube-proxy-8zs2x                         1/1     Running   0          15h   192.168.0.7    ip-192-168-0-7    <none>           <none>
+            kube-system   kube-proxy-f6m6l                         1/1     Running   0          15h   192.168.0.30   ip-192-168-0-30   <none>           <none>
+            kube-system   kube-scheduler-ip-192-168-0-7            1/1     Running   0          15h   192.168.0.7    ip-192-168-0-7    <none>           <none>
+
+            
+kubectl describe pod liveness-exec
+
+kubectl get deployments
+kubectl get deploy
+kubectl get rs
+kubectl rollout status deployment.v1.apps/<nginx-deployment>
+kubectl edit deployment.v1.apps/nginx-deployment
+
+            apiVersion: apps/v1
+            kind: Deployment
+            metadata:
+              name: deployment-name
+              labels:
+                app: nginx
+            spec:
+              replicas: 3
+              selector:
+                matchLabels:
+                  app: nginx
+              template:
+                metadata:
+                  labels:
+                    app: pog-name1
+                    app: nginx
+                spec:
+                  containers:
+                  - name: nginx
+                    image: nginx:1.7.9
+                    ports:
+                    - containerPort: 80
+                    
+#  Image should be present in the kubernetes node in which deployment is running                 
+## The default pull policy is `Never` or `IfNotPresent` which causes the Kubelet to skip pulling an image if it already exists. If you would like to always force a pull, you can do one of the following:
+
+
+    ### set the imagePullPolicy of the container to Always.
+    ### omit the imagePullPolicy and use **:latest** as the tag for the image to use.
+    ### omit the imagePullPolicy and the tag for the image to use.
+                    
+## create from
+kubectl create -f ./my-manifest.yaml
+kubectl create --save-config -f https://k8s.io/examples/pods/probe/http-liveness.yaml
+
+kubectl replace --force -f https://k8s.io/examples/pods/probe/http-liveness.yaml
+
+kubectl get pod liveness-http -o yaml > liveness-http.yaml
+kubectl get deployment my-nginx -o yaml > /tmp/nginx.yaml
+ 
+kubectl delete pod liveness-http
+
+kubectl logs my-pod
+
+kubectl logs -f my-pod
+
+kubectl create deployment nginx --image=nginx  # start a single instance of nginx
+
+kubectl set image deployment/frontend www=image:v2               # Rolling update "www" containers of "frontend" deployment, updating the image
+kubectl rollout undo deployment/frontend                         # Rollback to the previous deployment
+kubectl rollout status -w deployment/frontend                    # Watch rolling update status of "frontend" deployment until completion
+
+kubectl logs my-pod --previous                      # dump pod logs (stdout) for a previous instantiation of a container
+
+kubectl logs -f nginx-deployment-7db75b8b78-bvbrm
+kubectl -n ingress-nginx logs -f nginx-ingress-controller-68db76b4db-qwc8v
+
+kubectl exec -it -n ingress-nginx nginx-ingress-controller-68db76b4db-qwc8v cat /etc/nginx/nginx.conf
+
+kubectl exec -it -n ingress-nginx nginx-ingress-controller-68db76b4db-qwc8v /bin/bash
+
+kubectl logs my-pod -c my-container
+kubectl logs -f my-pod -c my-container 
+
+kubectl create -f  ./nginx.yaml 
+kubectl expose deployment  nginx-deployment --type=LoadBalancer --name=nginx-service
+kubectl describe services nginx-service
+
+kubectl get svc  --all-namespaces -o wide
+
+        NAMESPACE                         NAME                                                      TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE   SELECTOR
+        000000000032856-np03anzw75-7783   nad-gitlab-microservice-000000000032856-np03anzw75-7783   ClusterIP      10.109.106.6     <none>        80/TCP                       34m   app=000000000032856-nad-gitlab-microservice-np03anzw75-7783
+        default                           kubernetes                                                ClusterIP      10.96.0.1        <none>        443/TCP                      46h   <none>
+        default                           nginx-service                                             LoadBalancer   10.100.169.137   <pending>     80:30758/TCP                 44h   app=nginx
+        ingress-nginx                     ingress-nginx                                             LoadBalancer   10.96.62.218     <pending>     80:31647/TCP,443:31991/TCP   21h   app.kubernetes.io/name=ingress-nginx,app.kubernetes.io/part-of=ingress-nginx
+        kube-system                       kube-dns                                                  ClusterIP      10.96.0.10       <none>        53/UDP,53/TCP                46h   k8s-app=kube-dns
+
+
+
+netstat -tulpn
+
+
+# if you get container id from describing a pod => Container ID:  docker://95150c3415a60a8bb1a1b09e5de41147fd19aebed81d695f6f5906246c4b427c
+sudo su # on the system which is running, normally not a master node
+docker logs 95150c3415a60a8bb1a1b09e5de41147fd19aebed81d695f6f5906246c4b427c
+# can also see log files in /var/log/containers
+ 
+ 
+#fix network: failed to set bridge addr: "cni0" already has an IP address different from 172.17.1.1/24
+# on issue node, check by if config and verify, then
+sudo su
+root@ip-192-168-0-30:/home/ubuntu/kubernetes-ingress#   ifconfig cni0 down
+root@ip-192-168-0-30:/home/ubuntu/kubernetes-ingress#   ip link delete cni0
+root@ip-192-168-0-30:/home/ubuntu/kubernetes-ingress#   exit
+exit
+
