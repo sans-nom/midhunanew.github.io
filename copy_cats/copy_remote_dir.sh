@@ -15,7 +15,7 @@ read -p "Enter user-name of $IP" USERNAME
 read -p "Enter remote folder you wanna copy" FOLDER_PATH
 
 #IP="192.168.2.49"
-#USERNAME="toobler"
+#USERNAME="midhun"
 #FOLDER_PATH="/var/www/mith_test/2014-07-31:16:27:08.zip"
 #FOLDER_PATH="/var/www/mith_test/kfjfjjdjshhh2"
 #FOLDER_PATH="/var/www/mith_test"

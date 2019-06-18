@@ -16,6 +16,8 @@ docker --version
 
 docker info
 
+docker login -u raudona
+
 # see ifo about containers 
 docker inspect <containerID>
 docker inspect 53c18ad7ae09
@@ -53,8 +55,11 @@ docker images
 #tag current image to different repository
 docker tag old_repository:tag new_repository:tag
 docker tag localhost:63033/ln0t12089/000000000032856-nad-gitlab-microservice/np03anzw75-7783:57ee01095678546a2c6d14c99bd055b59ac42e8f node-responder:latest
+docker tag bitbucket.org/raudona_arklys/nginx_plus:edge raudona/nginx-plus-ingress:latest
 
 docker tag <imageID> repo/project:tag
+
+docker push raudona/nginx-plus-ingress:latest
 
 #if you tag with `latest` you can start without tag, see above command
 docker run node-responder

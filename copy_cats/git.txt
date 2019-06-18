@@ -212,10 +212,12 @@ git log (all commits)
  --since=2.weeks
  --author
  --before="2008-11-01"
- 
+
+ git log --stat filename
+  
  git log -p filename #see the changes in each commit
- 
- git log -p --author="midhun@toobler.com" 2d9b822d...e8488e17 #change between two commits
+
+ git log -p --author="midhun@n0vv.com" 2d9b822d...e8488e17 #change between two commits
 
 _____________________________________________________________________________________
 
@@ -254,6 +256,29 @@ git checkout #hashOfGood -- <filename>
 git revert --no-commit #hash1 #hash2 .. #hashN
 git commit -m "revert message"
 >
+
+## make multiple commits into one
+----
+ git rebase -i HEAD~4 #the last number, here 4 is the no. of commits you want to squash.
+
+# you will get a screen like this :
+
+pick 8dd81e6 feature-b changes to the config files
+pick 7ea892d Feature-a fixed class A b and C
+pick a465749 Feature-b fixed tests
+pick cd6f406 Feature-b fixed tests
+
+
+# change all picks except of the first one to s. 
+# s is short for squash like below:
+pick 8dd81e6 feature-b changes to the config files
+s 7ea892d Feature-a fixed class A b and C
+s a465749 Feature-b fixed tests
+s cd6f406 Feature-b fixed tests
+
+
+
+
 
 http://nvie.com/posts/a-successful-git-branching-model/
 
