@@ -268,7 +268,12 @@ https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-
  
  ## Check PORT usage
  -----
+
+### find out the process which uses the port 4444
     lsof -t -i:4444
+
+### list all connections relates to port 4200, combine with `| wc -l`  to get count
+    lsof -i TCP:4200
  
  # npm
  -----

@@ -1,0 +1,15 @@
+## when /etc/resolv.conf is empty and ping raspberrypi.org fails
+ping -c 1 8.8.8.8
+echo "nameserver 8.8.8.8" | sudo tee --append /etc/resolv.conf
+## When wifi fails to connect
+sudo -i
+cd /etc/wpa_supplicant
+wpa_passphrase SSIDgoeshere Passwordgoeshere >> wpa_supplicant.conf
+exit
+## pi passwords
+ssh uses company password
+vnc uses personal password
+sudo shutdown now -r
+## set time
+Sun Jul 21 06:26:36 UTC 2019"
+sudo rpi-updateo
