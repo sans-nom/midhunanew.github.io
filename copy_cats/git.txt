@@ -218,6 +218,9 @@ git log (all commits)
  git log -p filename #see the changes in each commit
 
  git log -p --author="midhun@n0vv.com" 2d9b822d...e8488e17 #change between two commits
+ 
+ # find first commit in branch
+ git log master..branch --oneline | tail -1
 
 _____________________________________________________________________________________
 

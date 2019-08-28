@@ -1,0 +1,9 @@
+<section class="carousel-wrapper">
+    <div class="move-left" (click)="moveLeft($event)"> <span>&lsaquo;</span></div>
+    <ul class="carousel-container" #slide [@slideAnimation]="{value: slideDirection, params:{xCoord: slideX1}}">
+        <li *ngFor="let item of items;" appCarouselElement>
+            <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+        </li>
+    </ul>
+    <div class="move-right" (click)="moveRight($event)"><span>&rsaquo;</span></div>
+</section>

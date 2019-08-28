@@ -13,3 +13,6 @@ sudo shutdown now -r
 ## set time
 Sun Jul 21 06:26:36 UTC 2019"
 sudo rpi-updateo
+
+
+wpa_passphrase bnm26122013 kumman_123kk >> wpa_supplicant.conf
