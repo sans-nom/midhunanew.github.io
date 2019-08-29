@@ -1,0 +1,166 @@
+Issue,Summary,DateX,Time,Description
+NP03ANZW75-11142,Refresh cache on creating or updating data/rule,09/04/19,8,
+NP03ANZW75-10541,Enable caching for Business Data,10/04/19,8,
+NP03ANZW75-10541,Enable caching for Business Data,11/04/19,8,"gracefully handled the auth error.
+made changes on cache ms to allow calls from other ms that miss auth headers.
+deployed cache ms and rule engine till pre-prod.
+prepared Prod images."
+NP03ANZW75-10961,Modify Existing Methods to log API calls,16/04/19,8,"redeployed for show n tell.
+merged 2 times with development and ran pipeline 4 times."
+NP03ANZW75-12862,Create route in Kanban service for generic approval workflow process,17/04/19,8,
+NP03ANZW75-12861,Change route in RuleEngine service for to support complex busniess rule,18/04/19,8,
+NP03ANZW75-12861,Change route in RuleEngine service for to support complex busniess rule,22/04/19,8,
+NP03ANZW75-12862,Create route in Kanban service for generic approval workflow process,24/04/19,8,
+NP03ANZW75-12862,Create route in Kanban service for generic approval workflow process,25/04/19,8,
+NP03ANZW75-10541,Enable caching for Business Data,26/04/19,4,"created frontend deployment, failed due to code error in pipeline."
+NP03ANZW75-12861,Change route in RuleEngine service for to support complex busniess rule,26/04/19,4,
+NP03ANZW75-9607,Kafka Service Capability,27/04/19,8,"kafka prod issue, created new image."
+NP03ANZW75-12862,Create route in Kanban service for generic approval workflow process,29/04/19,8,
+NP03ANZW75-12862,Create route in Kanban service for generic approval workflow process,30/04/19,8,
+NP03ANZW75-14380,Create new collection in RBAC to maintain categories,02/05/19,8,"set up project, created deployment, created category collection."
+NP03ANZW75-14381,Create new UI components to manage category CRUD operations,02/05/19,8,"set up project, created deployment. not able to check screen due to rbac issue."
+NP03ANZW75-15195,Kafka microservice not calling logger,03/05/19,1,checking issues from logs.
+NP03ANZW75-14374,Create route in RBAC to create new category,03/05/19,8,save new category.
+NP03ANZW75-14381,Create new UI components to manage category CRUD operations,03/05/19,8,creating define access screens.
+NP03ANZW75-15195,Kafka microservice not calling logger,05/05/19,7,troubleshooting workflow.
+NP03ANZW75-14381,Create new UI components to manage category CRUD operations,06/05/19,8,creating define access inner screens.
+NP03ANZW75-14380,Create new collection in RBAC to maintain categories,06/05/19,4,completed collection creation and route.
+NP03ANZW75-14373,Create new GET routes in RBAC to get category entities,06/05/19,4,creating get APIs.
+NP03ANZW75-14381,Create new UI components to manage category CRUD operations,07/05/19,8,"completed lay-outing, starting api integration."
+NP03ANZW75-14373,Create new GET routes in RBAC to get category entities,07/05/19,8,
+NP03ANZW75-14381,Create new UI components to manage category CRUD operations,08/05/19,8,working on creation screens.
+NP03ANZW75-14373,Create new GET routes in RBAC to get category entities,08/05/19,4,completed.
+NP03ANZW75-14375,Create route in RBAC to modify category profile,08/05/19,4,add to user category profile
+NP03ANZW75-14378,Change route in all microservices for API authorization,08/05/19,8,"created release files, pending deployment."
+NP03ANZW75-14376,Create route in RBAC to remove all category accesses from user profile,09/05/19,8,
+NP03ANZW75-14378,Change route in all microservices for API authorization,09/05/19,6,"Deployed all ms, deploying throws errors due to high memory usage in shared cluster.
+Finally cluster went down / not responding.
+Different file naming convention from development:
+Renamed cache, tfs, infra and rmg files and redeployed.
+Fixed password missing in Jenkins happened due to re-specifying of empty password field in json."
+NP03ANZW75-14381,Create new UI components to manage category CRUD operations,09/05/19,8,Working on new directive.
+NP03ANZW75-14375,Create route in RBAC to modify category profile,10/05/19,4,completed.
+NP03ANZW75-14382,Create new UI component to manage user's category profile,10/05/19,8,
+NP03ANZW75-14377,Create route in RBAC for API authentication,10/05/19,4,
+NP03ANZW75-14382,Create new UI component to manage user's category profile,11/05/19,8,
+NP03ANZW75-14382,Create new UI component to manage user's category profile,12/05/19,8,
+NP03ANZW75-14377,Create route in RBAC for API authentication,13/05/19,8,looking into 400 issue.
+NP03ANZW75-14382,Create new UI component to manage user's category profile,13/05/19,8,
+NP03ANZW75-14379,Change login route in RBAC to return category access in login session profile,13/05/19,4,
+NP03ANZW75-14387,Testing of NP03ANZW75-10743,13/05/19,1,Tested 10739
+NP03ANZW75-14394,Show and tell for story NP03ANZW75-9664,14/05/19,1,
+NP03ANZW75-14377,Create route in RBAC for API authentication,14/05/19,4,
+NP03ANZW75-14393,Show and tell for story NP03ANZW75-9663,14/05/19,1,
+NP03ANZW75-14379,Change login route in RBAC to return category access in login session profile,14/05/19,8,
+NP03ANZW75-14377,Create route in RBAC for API authentication,15/05/19,5,"get category result change
+user factory console changes
+session time validation added
+logs added
+category update change
+endurl hashed
+header printed
+username change header
+factory function changes"
+NP03ANZW75-17179,Authentication of user and assign access to the user based on defined project roles,15/05/19,2,
+NP03ANZW75-17179,Authentication of user and assign access to the user based on defined project roles,16/05/19,8,
+NP03ANZW75-15761,RBAC as Service- Non Admin Users are also able to add & assign access to users,16/05/19,3,
+NP03ANZW75-15762,RBAC as Service- Only the list of NAD Admins are shown while adding user & assigning access,16/05/19,1,
+NP03ANZW75-15790,RBAC as Service- Access for the category is not removed when that category gets deleted,16/05/19,2,
+NP03ANZW75-15786,RBAC as Service- 'Define Access' breadcrumb is not working properly,16/05/19,1,
+NP03ANZW75-14377,Create route in RBAC for API authentication,17/05/19,8,"Issue fixing
+unit testing `/api/auth`
+took much time due to unavailability of kibana logs
+handed over to infra seeing errors from LDAP client."
+NP03ANZW75-17179,Authentication of user and assign access to the user based on defined project roles,20/05/19,8,
+NP03ANZW75-17420,Redeploying POC related Microservices.,21/05/19,1,"checking deployments, redeployed due to deletion of deployments.
+debugging issues occurred from merging."
+NP03ANZW75-17179,Authentication of user and assign access to the user based on defined project roles,21/05/19,6,
+NP03ANZW75-17188,Show and Tell for NP03ANZW75-17320,21/05/19,1,
+NP03ANZW75-17420,Redeploying POC related Microservices.,22/05/19,8,"resolved issues in ruleEngine and redeployed
+merged kanban with development
+since ruleEngine was giving 503 after half an hour, redeployed it.
+Added rule_templates to Mongo.
+Reverted Dockerfile and redeployed kanban ms.
+RuleEngine got deployed after new changes made in development branch.
+Conflicts to be removed."
+NP03ANZW75-17484,Redeploying webapp logger branch.(NP03ANZW75-10961),23/05/19,1,"Trying to redeploy webapp logging, conflicts to be resolved."
+NP03ANZW75-17420,Redeploying POC related Microservices.,23/05/19,7,"Debugging kanban flow.
+Created config data in ruleEngine.
+Verified complete workflow with team."
+NP03ANZW75-17484,Redeploying webapp logger branch.(NP03ANZW75-10961),24/05/19,4,"Conflicts resolution stuck at cass service file. Not able to pick up the changes manually.
+"
+NP03ANZW75-14375,Create route in RBAC to modify category profile,24/05/19,4,handling newly tested criteria which was not in prototype screens - NP03ANZW75-17337
+NP03ANZW75-17484,Redeploying webapp logger branch.(NP03ANZW75-10961),27/05/19,7,"Merged conflicted files upfront into feature branch with changes from development (whitespace formatting applied to pick up changes easily ), applied latest changes to URLs. 129 newly created functions skipped. Again merging with development with last two days change. Deployed."
+NP03ANZW75-17178,Implement new RBAC for RMG feature,27/05/19,1,
+NP03ANZW75-17409,Acceptance Testing - Day 7,28/05/19,0.5,attended S&T
+NP03ANZW75-17178,Implement new RBAC for RMG feature,28/05/19,7.5,
+NP03ANZW75-17178,Implement new RBAC for RMG feature,29/05/19,8,
+NP03ANZW75-17410,Acceptance Testing - Day 8,29/05/19,0.5,
+NP03ANZW75-17178,Implement new RBAC for RMG feature,30/05/19,8,
+NP03ANZW75-17191,Deployment of Userstory - NP03ANZW75-17320,31/05/19,8,
+NP03ANZW75-17191,Deployment of Userstory - NP03ANZW75-17320,03/06/19,5,
+NP03ANZW75-17188,Show and Tell for NP03ANZW75-17320,03/06/19,1,
+NP03ANZW75-18780,Impement RBAC for course access,03/06/19,2,
+NP03ANZW75-18871,Assign SKU- Project Wise- Unstoppable Loader/Spinner is shown when User opens a project to assign sku,05/06/19,4.5,
+NP03ANZW75-18780,Impement RBAC for course access,05/06/19,3.5,
+NP03ANZW75-18780,Impement RBAC for course access,06/06/19,8,
+NP03ANZW75-18780,Impement RBAC for course access,07/06/19,4,
+NP03ANZW75-18780,Impement RBAC for course access,10/06/19,8,
+NP03ANZW75-18780,Impement RBAC for course access,11/06/19,8,
+NP03ANZW75-18780,Impement RBAC for course access,12/06/19,9.5,"checking against global api list to avoid defining default access for every user.
+applied caching to make things faster.
+testing pending."
+NP03ANZW75-18781,Show and Tell for NP03ANZW75-17745,12/06/19,0.5,
+NP03ANZW75-18780,Impement RBAC for course access,13/06/19,6,
+NP03ANZW75-14390,Show and tell for feature NP03ANZW75-9660,19/06/19,1,Merged and submitted merge request.
+NP03ANZW75-22454,Production KAFKA is Down,02/07/19,8,"Changed the producer pattern, load tested it locally."
+NP03ANZW75-21208,changes in rule creation to support new UI,04/07/19,8,
+NP03ANZW75-21208,changes in rule creation to support new UI,05/07/19,8,
+NP03ANZW75-21208,changes in rule creation to support new UI,08/07/19,8,rule execution logic
+NP03ANZW75-21208,changes in rule creation to support new UI,09/07/19,8,
+NP03ANZW75-21489,write unit test cases for apis - configData/resolveComments/{biz_data_id} and /configData/type/{type}/key/{key},10/07/19,8,
+NP03ANZW75-21489,write unit test cases for apis - configData/resolveComments/{biz_data_id} and /configData/type/{type}/key/{key},11/07/19,8,"upgraded hapi lab and code, merged everyone's code, resolved the initializing issue with a timeout promise."
+NP03ANZW75-21489,write unit test cases for apis - configData/resolveComments/{biz_data_id} and /configData/type/{type}/key/{key},12/07/19,8,
+NP03ANZW75-21206,Deployment of Userstory,15/07/19,8,
+NP03ANZW75-24113,"APIs for getting version2 rules, v2 rule by it's ID and update rule",16/07/19,8,"Created 3 new routes, deployed."
+NP03ANZW75-24115,Upgrade from v16 to v18,18/07/19,8,upgraded packages and rewritten development code.
+NP03ANZW75-24115,Upgrade from v16 to v18,19/07/19,8,merged current sprint branches and included test scripts.
+NP03ANZW75-24135,Merge Sprint 1 branches to developement and add unit tests,22/07/19,8,Covered new apis with unit test cases.
+NP03ANZW75-23479,Messages displayed for User should be reviewed and changed appropriately In APW/MEPS,23/07/19,4,Inspecting current message popups and importing new message toast component.
+NP03ANZW75-24135,Merge Sprint 1 branches to developement and add unit tests,23/07/19,4,"final round of testing and code improvements, manual merging with development."
+NP03ANZW75-23479,Messages displayed for User should be reviewed and changed appropriately In APW/MEPS,24/07/19,4,
+NP03ANZW75-23477,Messages displayed for User should be reviewed and changed appropriately In Caas,24/07/19,4,
+NP03ANZW75-23347,Integrate new UI - NAD log in screen ,25/07/19,8,applied new ui design and bound existing functionalities. started creating carousel.
+NP03ANZW75-23347,Integrate new UI - NAD log in screen ,26/07/19,8,Created new carousel for Login page.
+NP03ANZW75-23347,Integrate new UI - NAD log in screen ,29/07/19,8,"multi-line text ellipse for description field in portfolio cards was not working, so created new directive. then moved to common directives.
+
+created template for portfolio details pop-up."
+NP03ANZW75-23350,api modifications for NAD Login Screen,30/07/19,8,"Created public accessible replicas of login page apis in various microservices.
+
+Deployed MePS, Jenkins and RuleEngine."
+NP03ANZW75-23349,Load contents in ticker at the bottom of the screen & User/Approver toggle - (NAD LOGIN SCREEN),31/07/19,8,
+NP03ANZW75-23349,Load contents in ticker at the bottom of the screen & User/Approver toggle - (NAD LOGIN SCREEN),01/08/19,8,
+NP03ANZW75-23350,api modifications for NAD Login Screen,02/08/19,8,Added details as per S&T
+NP03ANZW75-25375,Gcp account - completing the final steps,08/08/19,4,set up account
+NP03ANZW75-25315,Meeting with DTas team for Category Creation (NP03ANZW75-17740),08/08/19,1,
+NP03ANZW75-24741,Enhanced Login Screen- Login button is enabled even if User ID/Email & Passwords fields are empty.,08/08/19,1,
+NP03ANZW75-25255,modify business rule schema to add comments in schema,08/08/19,2,
+NP03ANZW75-25255,modify business rule schema to add comments in schema,09/08/19,3,prepared TDD
+NP03ANZW75-25375,Gcp account - completing the final steps,09/08/19,5,tested new gcp account on local server.
+NP03ANZW75-25255,modify business rule schema to add comments in schema,12/08/19,3,
+NP03ANZW75-25111,Deployment of Userstory ,12/08/19,5,
+NP03ANZW75-25302,modify route for business rule ,13/08/19,8,
+NP03ANZW75-25253,add route to add comments on business rule,14/08/19,8,
+NP03ANZW75-25333,add route to add comments on business rule,16/08/19,8,
+NP03ANZW75-25237,modify business rule route ,19/08/19,8,
+NP03ANZW75-25019,add route to update the status of business rule,20/08/19,8,
+NP03ANZW75-25114,Show and Tell for userstory,21/08/19,1,
+NP03ANZW75-25111,Deployment of Userstory ,21/08/19,7,Fixed issues and redeployed
+NP03ANZW75-25375,Gcp account - completing the final steps,22/08/19,1,Redeployed with new account details and tested from local.
+NP03ANZW75-25297,Fetch comments and mark as resolved,22/08/19,1,
+NP03ANZW75-25296,deactivate and activate business rules,22/08/19,1,
+NP03ANZW75-25295,Production Support ,22/08/19,1,discussion re. RMG report.
+NP03ANZW75-26582,Swagger New Version Documentation,22/08/19,4,"Swagger was working in local server, but nginx basepath on remote caused an issue which was giving 404 for swagger ui files and json after deployment. After many deployments, copied the original templates and modified to include basepath in them. Instead of a new npm module, we used the templates directory option available in hapi-swagger."
+NP03ANZW75-26982,bug fixes of NP03ANZW75-6576  (AUG SPRINT 1),23/08/19,8,
+NP03ANZW75-26985,NEW LOGIN SCREEN CHANGES  .,27/08/19,8,
+NP03ANZW75-26985,NEW LOGIN SCREEN CHANGES  .,28/08/19,8,
