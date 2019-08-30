@@ -6,7 +6,7 @@ const stream = csv.format({
     headers: headers,
     quote: '"'
 });
-let date, prev, day, formed, result = [headers], slNo = 80, loopCount = 0;
+let date, prev, day, formed, result = [headers], slNo = 79, loopCount = 0;
 var writeStream = fs.createWriteStream('./output.csv');
 // stream.pipe(process.stdout);
 // stream.pipe(writeStream);
@@ -15,38 +15,42 @@ fs.createReadStream('midhun.km.csv')
     .on('data', (row) => {
         let { Issue, Summary, DateX, Time, Description } = row;
         prev = DateX;
-        console.log(loopCount);
         
-
+        
         if (!Description) {
             Description = Summary.toLowerCase();
         }
-
-        if (loopCount === 0) {
-            formed = ms(prev, 'DD/MM/YY').format('DD-MMM-YY');
-            result.push(['Day ' + slNo, formed, Issue, Summary, Description, Time]);
-        }
-        else if (loopCount === 1) {
-            day = ms(prev, 'DD/MM/YY').format('dddd');
-            result.push([day, '', Issue, Summary, Description, Time]);
-        }
-        else {
-            result.push(['', '', Issue, Summary, Description, Time]);
-        }
-
+        
         if (date !== prev) {
-            console.log('RESET and push new line');
-            if (loopCount === 0) {
-                day = ms(prev, 'DD/MM/YY').format('dddd');
+            if (loopCount === 1) {
+                console.log('Adding one more line if it was one whole day task')
+                day = ms(date, 'DD/MM/YY').format('dddd');
                 result.push([day, '', '', '', '', '']);
             }
+            console.log('RESET loopCount and push new line\n');
             result.push(['', '', '', '', '', '']);
             loopCount = 0;
             slNo++;
         }
-        else {
-            loopCount++;
+
+        console.log(loopCount, date, prev, Time);
+
+        if (loopCount === 0) {
+            formed = ms(prev, 'DD/MM/YY').format('DD-MMM-YY');
+            console.log('push first line');
+            result.push(['Day ' + slNo, formed, Issue, Summary, Description, Time]);
         }
+        else if (loopCount === 1) {
+            day = ms(prev, 'DD/MM/YY').format('dddd');
+            console.log('push second line');
+            result.push([day, '', Issue, Summary, Description, Time]);
+        }
+        else {
+            console.log('push additional line');
+            result.push(['', '', Issue, Summary, Description, Time]);
+        }
+
+        loopCount++;
 
         date = prev;
     })
