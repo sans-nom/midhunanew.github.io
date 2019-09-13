@@ -1,0 +1,9 @@
+<app-carousel>
+    <ng-container *ngFor="let portfolio of portfolios;">
+      <ng-container *appCarouselItem>
+        <app-ru-portfolio-v2-card [card]="portfolio" (cardCliked)="cardClicked($event)"
+          (bookMarkChnage)="bookMarkChange($event)">
+        </app-ru-portfolio-v2-card>
+      </ng-container>
+    </ng-container>
+  </app-carousel>
