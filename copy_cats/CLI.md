@@ -74,6 +74,7 @@
 
     rsync -avzP --dry-run --ignore-existing --exclude-from 'sync-exclude-list.txt' --log-file=rsyncNew.log ~/* midhun@192.168.0.103:~/ > ~/Desktop/syncOutput.txt
     rsync -anvP --ignore-existing /media/Ubuntu116GB-OS2/bin/ /media/My\ Passport/Ubuntu116GB-OS2/bin > op.txt
+    rsync -Pavzh --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
 ### && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
 
     ( cd /media/Ubuntu116GB-OS2/workSpace && find . -type f -exec md5sum {} \; ) > /home/mithoos/Documents/hholtmann.md5sum
