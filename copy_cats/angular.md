@@ -1,3 +1,8 @@
+A view is specifically represented by a `ViewRef` instance associated with the component. A view that belongs to a component is called a `host view`.
+
+`$implicit` supplies defult value `ng-template`. It is used either with `ng-container and *ngTemplateOutlet` or with `.createEmbeddedView` - https://angular.io/api/common/NgTemplateOutlet#example
+
+
 ### ng-template
     Angular translates the *ngIf attribute into a <ng-template> element, wrapped around the host element, also used for input #templateReference
 ### ng-container
@@ -30,3 +35,27 @@ Declares a DOM event to listen for, and provides a handler method to run when th
     onClick(btn) {
         console.log('button', btn, 'number of clicks:', this.numberOfClicks++);
     }
+
+
+## How to Directives
+
+Access current element reference and attach to view again
+
+    constructor(  private templateRef: TemplateRef<any>,  private viewContainer: ViewContainerRef)
+    function (this.viewContainer.clear();this.viewContainer.createEmbeddedView(this.templateRef);)
+
+This is how it affects DOM : :)
+
+    AttriBute directive
+    p    e
+    p    h
+    e    a
+    a    v
+    r    i
+    a    o
+    n    u
+    c    r
+    e
+
+
+    <Structur>al directive
