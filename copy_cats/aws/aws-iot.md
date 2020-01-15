@@ -35,7 +35,7 @@ https://eu-west-1.console.aws.amazon.com/iot/home?region=eu-east-1#/search?searc
     Aggregation Type `Statistics`
     Aggregation Field `connectivity.connected`
 
-  `aws iot-data update-thing-shadow --thing-name shijesh --payload "{\"state\":{\"reported\":{\"stress\":90,\"heartRateVariability\":10,\"heartRate\":80,\"spo2\":30}},\"version\":850}" "output.txt"`
+  `j=$((1 + RANDOM % 100)) && aws iot-data update-thing-shadow --thing-name myDonroid --payload "{\"state\":{\"reported\":{\"stress\":90,\"heartRateVariability\":10,\"heartRate\":$j,\"spo2\":30}},\"version\":$i}" "output.txt" && i=$((i+1))`
 
   `aws iot update-thing --thing-name shijesh --attribute-payload {\"attributes\":{\"name1\":\"value2\"}}`
 
