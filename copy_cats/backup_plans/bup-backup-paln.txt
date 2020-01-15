@@ -1,0 +1,53 @@
+bash_history
+txt files
+jpg  files
+jpeg    files
+png files
+odt files
+xlx files
+xlxs files
+pdf files
+zip files
+rar files
+ts files
+js files
+php files
+opml files
+xspf files
+html files
+gnucash files
+CR2 files
+sh files
+log files
+mp4 files
+mp3
+avi
+mkv
+
+config files
+/etc/nginx/stite-available
+
+firefox profiles
+home folder
+
+tree . | tail -1
+find . -type f -printf . | wc -c
+find . -type f | wc -l
+cat tree.txt | wc -l
+
+ tree
+156536 directories, 1399091 files
+156622 directories, 1400548 files
+156710 directories, 1401475 files
+
+ find .
+1360618
+1360363
+
+cat /home/mithoos/Desktop/tree2.txt | wc -l --> 1557735
+cat /home/mithoos/Desktop/tree.txt  | wc -l --> 1557756
+
+
+cat all2.txt | wc -l --> 1360491
+cat all.txt | wc -l -->  1358005
+
