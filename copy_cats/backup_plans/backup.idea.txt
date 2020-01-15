@@ -1,0 +1,45 @@
+How to do a proper data backup
+
+find node_modules and remove them
+
+backup .bash_history, .bashrc
+
+find *.jpg files, move parent directories,
+find *.png files, move parent directories,
+export sea horse keys
+export firefox bookmarks and profiles
+find *.JPG files, move parent directories,
+find *.MOV files, move parent directories,
+find *.CR2 files, "	"
+find, *.mp4 files, "	"
+find, *.avi, *.mkv, ...
+
+find *.txt files
+find large files
+find *.zip files
+find *.tar.gz
+find *.mp3 files
+
+
+see /opt/
+see /etc/hosts
+see /etc/nginx/
+
+
+find *.pdf files
+find *.doc, *.docx files
+find *.gnucash files
+find keeppassx files
+
+find *.json, *.html, *.cmd, *.js
+
+find *.gif
+
+find *.flv
+
+
+find *.bup.* files
+
+
+
+
