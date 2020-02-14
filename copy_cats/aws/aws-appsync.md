@@ -26,3 +26,9 @@
     ? region:  eu-west-1
     init failed
 
+
+`amplify env list --details --json`
+
+`amplify env pull`
+
+`amplify env get --name dev --json`
