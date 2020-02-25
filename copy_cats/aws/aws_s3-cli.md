@@ -47,7 +47,7 @@
  
 # export files using aws cloudwatch console from `Log Group` listing page.
  
- aws s3 cp s3://capture-log-garmin/ . --recursive
+ aws s3 cp s3://heart-rate-analytics-from-iot-core . --recursive
  find . -iname *.gz -exec gunzip -k "{}" \;
  
  

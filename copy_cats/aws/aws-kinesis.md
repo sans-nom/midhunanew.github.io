@@ -1,0 +1,3 @@
+aws kinesis list-streams
+
+
