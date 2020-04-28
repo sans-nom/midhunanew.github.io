@@ -9,3 +9,4 @@
  sam build GarminEndpoint && sam local invoke -e /home/power/Projects/MANAGEMENT/fuell/SAM/connectDebug/event_Daily_GarminEndpoint.json GarminEndpoint
  sam build GarminEndpoint && sam local invoke -e /home/power/Projects/MANAGEMENT/fuell/SAM/connectDebug/event_Sleep_GarminEndpoint.json GarminEndpoint
  sam build ScoreHandler && sam local invoke -e /home/power/Projects/MANAGEMENT/fuell/SAM/connectDebug/event_ScoreHandler.json ScoreHandler
+ sam build RealTimer && sam local invoke -e /home/power/Projects/MANAGEMENT/fuell/SAM/connectDebug/event_State_RealTimer.json RealTimer

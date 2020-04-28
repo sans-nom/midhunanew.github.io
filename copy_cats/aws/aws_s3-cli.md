@@ -49,5 +49,6 @@
  
  aws s3 cp s3://heart-rate-analytics-from-iot-core . --recursive
  find . -iname *.gz -exec gunzip -k "{}" \;
+ aws s3 rm s3://capture-log-garmin/hrv_dataset/Version --recursive
  
  

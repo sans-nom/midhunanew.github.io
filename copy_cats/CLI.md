@@ -223,6 +223,9 @@ https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-
 
 `see change_hostname_aws.sh` in this repo.
 
+# Deal with date time
+    date +%s%N | cut -b1-13 # prints JS equivalent Date.now()
+
 ## See file cahnges as it ahppens
 -------------------------
 

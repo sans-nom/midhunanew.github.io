@@ -32,3 +32,9 @@
 `amplify env pull`
 
 `amplify env get --name dev --json`
+
+`amplify function build`
+
+`amplify function invoke fleetStats`
+
+`amplify mock api`
