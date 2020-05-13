@@ -84,5 +84,13 @@ https://eu-west-1.console.aws.amazon.com/iot/home?region=eu-east-1#/search?searc
 
   ## IoT Core --> IoT Analytics Manual Delta window of 5 minutes scheduled at 1 minute interval.
 
+    SELECT *, Newuuid() as id, Timestamp()/1000 as ttl FROM 'stress'  # APPLY TTL and create `id` to tables
+
     SELECT *, parse_time("yyyy-MM-dd HH:mm:ss", timestamp()) AS txs, timestamp() AS mmm FROM 'mnx/heartRateVariability'
     SELECT * FROM heckslll_datastore WHERE txs > cast(localtimestamp - interval '5' minute AS Varchar)
+
+  ### Some testings
+  SELECT *, cast(Timestamp() AS Varchar) as id, cast(substring(Timestamp(), 0, 10) AS Integer) as ttl, Timestamp()/1000 as ttll FROM 'stress' 
+  SELECT *, cast(Timestamp() AS Varchar) as id, cast(substring(Timestamp(), 0, 10) AS Integer) as ttl FROM 'stress' 
+  SELECT *, cast(Timestamp() AS Varchar) as id, cast(substring(Timestamp(), 10) AS Integer) as ttl FROM 'stress' 
+  SELECT *,   cast(Timestamp() AS Varchar) as id,   remainder(Timestamp(), 1000) as ttl FROM 'stress'  

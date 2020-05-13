@@ -1,0 +1,1 @@
+{"state":{"reported":{"stress":100,"heartRateVariability":72,"heartRate":72,"spo2":30}},"metadata":{"reported":{"stress":{"timestamp":1588851320},"heartRateVariability":{"timestamp":1588851320},"heartRate":{"timestamp":1588851320},"spo2":{"timestamp":1588851320}}},"version":16792,"timestamp":1588851320}
