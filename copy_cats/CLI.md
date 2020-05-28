@@ -74,10 +74,16 @@
     find . -type d
 
 ### Check all files are copied --dry-run (-n) Use -z for network-compression, --exclude=*.amr
-
+    #### n means dry-run, a means archive, P means partial, z means compression
     rsync -avzP --dry-run --ignore-existing --exclude-from 'sync-exclude-list.txt' --log-file=rsyncNew.log ~/* midhun@192.168.0.103:~/ > ~/Desktop/syncOutput.txt
+    #### n means dry-run
     rsync -anvP --ignore-existing /media/Ubuntu116GB-OS2/bin/ /media/My\ Passport/Ubuntu116GB-OS2/bin > op.txt
+    #### human readable copying
     rsync -Pavzh --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
+    #### verify and delete
+    rsync -Pavzh --checksum --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
+    rsync -Pavzh --remove-source-files --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
+    
 ### && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
 
     ( cd /media/Ubuntu116GB-OS2/workSpace && find . -type f -exec md5sum {} \; ) > /home/mithoos/Documents/hholtmann.md5sum
@@ -89,6 +95,7 @@
 
 ## get folder size
     du -hs  routes/
+    du -chd 1 | sort -h
 
 ## list DNS servers
     nmcli dev list iface eth0 | grep IP4
