@@ -63,6 +63,7 @@
     grep -E 'fatal|error|critical|failure|warning|' *.log # Search some files for multiple words
     grep -R "test" /var/x/ # Seacrh file content recursively
     grep -I "test" /var/x/ # Skip binary files
+    grep -lir 'searchTerm' /textFiles/* | xargs mv -t /results # move files by searchTerm
     locate -i "<name>" # Search index
     find /var/www7/  -type f -iname "*quote*" | grep ".txt" # Search in folder
     find . -type f -iname "*.jsx" # Find in current folder
@@ -74,6 +75,7 @@
     find . -type d
 
 ### Check all files are copied --dry-run (-n) Use -z for network-compression, --exclude=*.amr
+    find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
     #### n means dry-run, a means archive, P means partial, z means compression
     rsync -avzP --dry-run --ignore-existing --exclude-from 'sync-exclude-list.txt' --log-file=rsyncNew.log ~/* midhun@192.168.0.103:~/ > ~/Desktop/syncOutput.txt
     #### n means dry-run
