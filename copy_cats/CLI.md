@@ -83,8 +83,7 @@
     #### human readable copying
     rsync -Pavzh --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
     #### verify and delete
-    rsync -Pavzh --checksum --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
-    rsync -Pavzh --remove-source-files --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
+    rsync -Pavzh --checksum --remove-source-files --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
     
 ### && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
 
