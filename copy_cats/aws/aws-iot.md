@@ -67,6 +67,13 @@ https://eu-west-1.console.aws.amazon.com/iot/home?region=eu-east-1#/search?searc
   SELECT *, parse_time("yyyy-MM-dd HH:mm:ss", timestamp()) as ts FROM "iot_device_analytics" 
   SELECT upper(type), topic(3) as thing FROM '$aws/things/+/shadow/update/accepted'
   SELECT sql_version(), md5(deviceid),  as thing FROM '$aws/things/+/shadow/update/accepted'
+  SELECT Newuuid() as unique, topic(3) AS thing, state.reported.heartRateVariability as value, (Timestamp()/1000)+172800 as ttl, parse_time("yyyy-MM-dd", timestamp()) as date FROM '$aws/things/+/shadow/update/accepted' 
+
+
+ ${newuuid()}
+ ${current.state.reported.userId}
+ ${timestamp}
+ ${timeStampEpoch}
 
 ## time outputs
 
