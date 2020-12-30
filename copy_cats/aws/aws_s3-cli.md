@@ -1,7 +1,10 @@
 # bucket name  --> capture-log-garmin
 # iam user name  --> CWLExportDevUser
 # bucket in same region --> eu-west-1
- 
+
+export AWS_PROFILE=midhun
+aws s3 sync . s3://pwa-mobile
+
  
  aws s3api create-bucket --bucket capture-log-garmin --create-bucket-configuration LocationConstraint=eu-west-1
  

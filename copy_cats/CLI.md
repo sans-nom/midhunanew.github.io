@@ -33,6 +33,9 @@
     ls -1 | wc -l # Count the items inside in the directory
     ls -la | grep ^d | wc -l # Count the directories inside in the directory
 
+## Find largest files
+    sudo find / -type f -printf "%s\t%p\n" | sort -n | tail -20
+
 ## memoty usage
     free -m # in `m`B or `g`B
 
