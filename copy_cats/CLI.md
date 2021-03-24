@@ -272,6 +272,7 @@ https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-
 # ZIP
  
     zip zipname.zip -r folder_name
+    git archive -o file.zip --prefix=prefixIfNeeded/ -9 HEAD # Add files considering .gitignore, prefix if you need a folder, 9 is max. compression
     unzip /var/www/temp/zipname.zip -d /var/www
     tar -xvzf community_images.tar.gz # x - extract; v - verbose; z - gzip; f - file
  
