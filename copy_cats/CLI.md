@@ -34,6 +34,7 @@
     ls -la | grep ^d | wc -l # Count the directories inside in the directory
 
 ## Find largest files
+    find ~ -type f -size +5M -exec du -h '{}' + | sort -hr | head -n 20
     sudo find / -type f -printf "%s\t%p\n" | sort -n | tail -20
 
 ## memoty usage
@@ -85,7 +86,8 @@
     rsync -anvP --ignore-existing /media/Ubuntu116GB-OS2/bin/ /media/My\ Passport/Ubuntu116GB-OS2/bin > op.txt
     #### human readable copying
     rsync -Pavzh --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
-    #### verify and delete
+    #### verify files regardless of modifiction time and size and delete
+    ### takes much time
     rsync -Pavzh --checksum --remove-source-files --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
     
 ### && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files

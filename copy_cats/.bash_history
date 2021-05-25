@@ -55,3 +55,13 @@
  ping google.com
  ping facebook.com
  ping 8.8.8.8
+ watch -n 1 curl -X POST -H "Content-Type: application/json" -d @req.json http://127.0.0.1:3000/qstatsvz
+ grep -Ril "'amplify-authenticator'" .
+ sam build SessionSummary && sam local invoke -e /home/power/Projects/MANAGEMENT/fuell/SAM/connectDebug/event_SessionSummary.json SessionSummary
+ find . -type f -newermt "-24 hours" -ls
+ ionic cordova run android --device -l --debug
+ http-server -p 8080 -c-1 dist/
+ lighthouse https://dev.dh3qqktgu1rux.amplifyapp.com
+ sudo find / -type f -printf "%s\t%p\n" | sort -n | tail -20  2> /dev/null
+ nodemon --exec "php crons/combine.php" --ignore public/
+ find . -type f -iname "*.txt" -exec shred -uvzn 0 {} \;
