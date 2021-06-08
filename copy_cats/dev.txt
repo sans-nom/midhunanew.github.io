@@ -1,0 +1,2 @@
+# Deploy frontend quickly
+node_modules/.bin/surge dist/

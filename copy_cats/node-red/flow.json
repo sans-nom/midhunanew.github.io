@@ -1,0 +1,345 @@
+[
+    {
+        "id": "1ef42512.37f4a3",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4779176.99cd2e8",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "57f556b3.05a918",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ecfa0142.7df69",
+        "type": "ui_tab",
+        "name": "Tab 2",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
+        "id": "5e25e9dc.66d898",
+        "type": "ui_group",
+        "name": "Group 8",
+        "tab": "ecfa0142.7df69",
+        "order": 8,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "c55f500a.24af2",
+        "type": "ui_tab",
+        "name": "Tab 3",
+        "icon": "dashboard",
+        "order": 3
+    },
+    {
+        "id": "c10f0ba7.636688",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "c55f500a.24af2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "95ba8841.9266b8",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "1413863b.baa24a",
+        "type": "mqtt-broker",
+        "broker": "192.168.24.2",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "15",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "4ea8322.ae0dacc",
+        "type": "mqtt-broker",
+        "broker": "192.168.24.2",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "15",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "8faaf5c3.2172e",
+        "type": "json",
+        "z": "1ef42512.37f4a3",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 730,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aaecaa6b.65275",
+        "type": "inject",
+        "z": "1ef42512.37f4a3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "on",
+        "payloadType": "str",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "d0fb9b97.a0c0a"
+            ]
+        ]
+    },
+    {
+        "id": "ac7dcfb2.bde5a8",
+        "type": "file in",
+        "z": "1ef42512.37f4a3",
+        "name": "object.json",
+        "filename": "/home/power/Projects/NODE/RED/sample/file/object.json",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 510,
+        "y": 80,
+        "wires": [
+            [
+                "8faaf5c3.2172e"
+            ]
+        ]
+    },
+    {
+        "id": "ce23db9b.c6d0e",
+        "type": "debug",
+        "z": "1ef42512.37f4a3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d0fb9b97.a0c0a",
+        "type": "timeout",
+        "z": "1ef42512.37f4a3",
+        "name": "My Timeout",
+        "outtopic": "",
+        "outsafe": "Safe",
+        "outwarning": "Warning",
+        "outunsafe": "Unsafe",
+        "warning": "5",
+        "timer": "25",
+        "repeat": true,
+        "again": false,
+        "x": 310,
+        "y": 80,
+        "wires": [
+            [
+                "ac7dcfb2.bde5a8"
+            ]
+        ]
+    },
+    {
+        "id": "28222bf.3835254",
+        "type": "http in",
+        "z": "1ef42512.37f4a3",
+        "name": "",
+        "url": "/frames",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "ce23db9b.c6d0e",
+                "46ade702.e5f0a",
+                "88ba112f.5023d",
+                "315595af.cf4c32"
+            ]
+        ]
+    },
+    {
+        "id": "46ade702.e5f0a",
+        "type": "http response",
+        "z": "1ef42512.37f4a3",
+        "name": "Responds",
+        "statusCode": "200",
+        "headers": {},
+        "x": 700,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "88ba112f.5023d",
+        "type": "ui_item_view",
+        "z": "1ef42512.37f4a3",
+        "group": "5e25e9dc.66d898",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "Group Item View",
+        "x": 730,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "315595af.cf4c32",
+        "type": "ui_item_view",
+        "z": "1ef42512.37f4a3",
+        "group": "c10f0ba7.636688",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "Single Item View",
+        "x": 730,
+        "y": 400,
+        "wires": []
+    }
+]
