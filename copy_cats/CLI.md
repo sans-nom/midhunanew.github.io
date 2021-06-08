@@ -83,7 +83,7 @@
     find . -type d
 
 ### Check all files are copied --dry-run (-n) Use -z for network-compression, --exclude=*.amr
-    find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+    find . -name 'node_modules' -print -type d -prune -exec rm -rf '{}' +
     #### n means dry-run, a means archive, P means partial, z means compression
     rsync -avzP --dry-run --ignore-existing --exclude-from 'sync-exclude-list.txt' --log-file=rsyncNew.log ~/* midhun@192.168.0.103:~/ > ~/Desktop/syncOutput.txt
     #### n means dry-run
