@@ -34,8 +34,12 @@
     ls -la | grep ^d | wc -l # Count the directories inside in the directory
 
 ## Find largest files
-    find ~ -type f -size +5M -exec du -h '{}' + | sort -hr | head -n 20
-    sudo find / -type f -printf "%s\t%p\n" | sort -n | tail -20
+    find ~ -type f -size +5M -exec du -h '{}' + | sort -hr | head -n 20 2> /dev/null
+    sudo find / -type f -printf "%s\t%p\n" | sort -n | tail -20 2> /dev/null
+
+## Rename and move using rsync
+    find . -type f -name '*:*' -print0 | sed -zre 'p;s/[:]+/_/g' | xargs -0 -n2 mv
+    rsync -Pavzh --remove-source-files ./talk /media/thumb/path/to/Documents/
 
 ## memoty usage
     free -m # in `m`B or `g`B
@@ -89,6 +93,8 @@
     #### verify files regardless of modifiction time and size and delete
     ### takes much time
     rsync -Pavzh --checksum --remove-source-files --ignore-existing power@192.168.1.136:/home/power/Documents/Canon ./
+    ### Remove empty folders
+    find . -type d -empty -delete
     
 ### && verify data integrity - http://unix.stackexchange.com/questions/109524/reasons-for-rsync-not-transfering-all-files
 
