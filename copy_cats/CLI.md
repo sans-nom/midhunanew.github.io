@@ -74,7 +74,7 @@
     grep -lir 'searchTerm' /textFiles/* | xargs mv -t /results # move files by searchTerm
     locate -i "<name>" # Search index
     find /var/www7/  -type f -iname "*quote*" | grep ".txt" # Search in folder
-    find . -type f -iname "*.jsx" # Find in current folder
+    find . -type f -maxdepth 0 -iname "*.jsx" # Find in current folder
     find ~ -type d -exec chmod +x {} \; # Give execution permission for directories
     find ~ -type f \( -iname '*.mp3' -o -iname '*.ogg' \) > mynewplaylist.m3u # Why dodn't yo listen some music?
 
