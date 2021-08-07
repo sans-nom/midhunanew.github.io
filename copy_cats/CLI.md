@@ -331,3 +331,7 @@ https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-
 
 ## Generate .pem file to login without password -
  http://askubuntu.com/a/644027/300767
+
+## Use mouse on keyboard
+gsettings set org.gnome.desktop.a11y.keyboard mousekeys-init-delay 20;
+https://askubuntu.com/a/1234995
