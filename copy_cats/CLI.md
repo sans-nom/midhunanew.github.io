@@ -304,11 +304,16 @@ https://www.digitalocean.com/community/tutorials/how-to-use-pm2-to-setup-a-node-
  
  # npm
  -----
+    npm i -g npm # `it won't give a clue if node is new and npm is still old`
     sudo npm cache clean -f
     sudo npm install -g n
     sudo n stable
     sudo n
     npm install node-ses --save -save-exact
+
+ # redis-cli - delete all keys
+ ------
+     redis-cli KEYS "xxx*" | xargs redis-cli DEL
 
 
  # chmod
