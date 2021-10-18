@@ -63,6 +63,14 @@ _____________________________________________________
 git pull origin develop | git fetch
                         | git merge --ff-only origin/develop
 
+Show git branches by date - useful for showing active branches
+_____________________________________________________
+#https://www.commandlinefu.com/commands/view/2345/show-git-branches-by-date-useful-for-showing-active-branches
+
+
+for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k"`\\t"$k";done|sort
+
+
 _____________________________________________________
 #CONFLICT RESOLUTION
 
